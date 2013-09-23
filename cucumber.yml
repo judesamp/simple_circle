@@ -1,0 +1,4 @@
+# config/cucumber.yml
+##YAML Template
+
+autotest-all: --color 

@@ -1,0 +1,86 @@
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 345) running in data directory "/usr/local/var/postgres"?
+LOG:  database system was shut down at 2012-12-19 18:18:20 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "judesamp" does not exist
+FATAL:  role "postgres" does not exist
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-09-01 22:06:13 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  role "postgres" does not exist
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+LOG:  autovacuum launcher process (PID 1582) was terminated by signal 9: Killed
+LOG:  terminating any other active server processes
+WARNING:  terminating connection because of crash of another server process
+DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+WARNING:  terminating connection because of crash of another server process
+DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+WARNING:  terminating connection because of crash of another server process
+DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+LOG:  all server processes terminated; reinitializing
+LOG:  database system was interrupted; last known up at 2013-09-12 19:50:49 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/66AF6338
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2013-09-12 19:53:13 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/66AF6398
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-09-12 20:06:57 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  column "title" does not exist at character 14
+STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"

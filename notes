@@ -1,0 +1,118 @@
+validation/initialization/
+
+
+
+Okay, experimenting here...will need a lot of editing...
+
+			• Create gemset: 
+				1. cd into directory
+				2. --rvm gemset list-- to see if gemset already exists
+				3. --rvm gemset create [name]-- creates new gemset
+				4. --rvm gemset use [name]-- to use new gemset
+				5. List gems you want in Gemfile 
+				6. Run --Bundle Install-- to install gems
+	
+• To set environment shortcuts:
+	1. at shell prompt, type ls -al 
+	2. this will give you list of all files (hidden and otherwise)
+	3. open .bash_profile
+	4. add shortcuts and save
+	* Here are a few examples of shortcuts I'm using right now:
+		• alias rvmtt='rvm use 1.9.3-p286@tech_tennis'
+		• alias dirtt='cd ~/Sites/tech_tennis/'
+		• alias rungun='shotgun -s thin -p 3000'
+		• alias irby='irb --simple-prompt'
+		• alias progress='pg_ctl -D /usr/local/var/postgres -l logfile start'
+		• alias stopit='pg_ctl -D /usr/local/var/postgres -l logfile stop'
+		
+		
+			• Setting up testing environments
+				---RSpec
+					1. install RSpec (if not already installed via Bundle Install--see above)
+					2. create file in spec directory, mirroring domain level...for instance, if
+					 	domain/entities/app.rb,
+					 	then spec/domain/entities/app.rb
+					3. wire this spec file(s) to ../services/spec_helper.rb (which is, in turn, wired to
+					 	domain files)
+					4. write a quick spec test, perhaps:
+			
+							describe "RSpec Greeter" do
+							  it "should say 'Hello RSpec!' when it receives the greet() message" do
+							    greeter = Domain::RSpecGreeter.new
+							    greeting =  greeter.greet
+							    greeting.should == "Hello RSpec!"
+							  end
+							end
+			
+					4. now run rspec --color (in app directory) to see if things are working as expected
+					5. test further by working in domain to "get to green"
+	
+	
+	
+				---Cucumber
+	
+				  *****all cucumber stuff is temporary; some file locations/procedures still unclear*****
+	
+					1. install Cucumber (if not already installed via Bundle Install--see above)
+					2. write feature, something like: 
+		
+						Feature: greeter says hello
+						  In order to start learning RSpec and Cucumber
+						  As a reader of The RSpec Book
+						  I want a greeter to say Hello
+						  Scenario: greeter says hello
+						    Given a greeter
+						    When I send it the greet message
+						    Then I should see "Hello Cucumber!"
+		
+					3. run "cucumber features" at project root. This will give you snippets out of which to
+					 	create step definitions.
+					4. now create another file to implement step definitions; same location for now
+					5. run "cucumber" from project root again; "get to green"
+
+
+
+		
+• Setting up a postgres database and using DataMapper
+	---Database: Part 1
+		1. cd into project directory; start server (pg_ctl -D /usr/local/var/postgres -l logfile start)
+		2. Create database. Type "createdb <dbname>" at prompt. Note that this will make current user the owner of the database. To communicate with your new database, type "psql <dbname>" at shell prompt. This will open a session of psql. 
+		3. Further test connection using Navicat. Open application, click Connection, and fill in the information as necessary.
+		
+		!!!Note: Will need more detail here to make sure we're creating databases with correct owners and protections (passwords, etc.). Investigate tablespaces.
+
+	
+	---Database: Part 2
+	
+	1. Be sure to require necessary gems in gemfile: data_mapper, pg, and dm-postgres-adapter.
+	
+	2. Insert at top of Persistence model files :
+	
+			DataMapper.setup(:default, 'postgres://user:password@hostname/database')
+	
+	3. Design persistence model, one file for each entity or service (match to domain layer). Describe each 
+			entity in a module and "include" that module in Domain layer entities/services. You will need to
+			include the following text below module name: 
+	
+				"include DataMapper::Resource"
+	
+	
+	4. Include DataMapper setup in init.rb file:
+	
+			DataMapper.setup :default, 'postgres://localhost/apptest'
+			DataMapper.auto_upgrade!
+		
+	5. You should be good to go at this point. Again, test using Navicat.
+
+
+
+• Setting up roar representers
+
+• Setting up templates/mustache
+
+• How to implement view logic
+
+• How to wire up logs (for sinatra, database, ?)
+
+• How to use pry
+	

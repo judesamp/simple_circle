@@ -1,0 +1,16 @@
+F
+
+Failures:
+
+  1) RSpec Greeter should say 'Hello RSpec!' when it receives the greet() message
+     Failure/Error: greeter = RSpecGreeter.new
+     NameError:
+       uninitialized constant RSpecGreeter
+     # ./spec/domain/entities/app_spec.rb:5:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00087 seconds
+1 example, 1 failure
+
+Failed examples:
+
+rspec ./spec/domain/entities/app_spec.rb:4 # RSpec Greeter should say 'Hello RSpec!' when it receives the greet() message
