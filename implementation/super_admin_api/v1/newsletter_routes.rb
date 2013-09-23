@@ -4,41 +4,40 @@ module Implementation
 
 
 
-            ###### churches ########
+            ###### organizations ########
 
-            #list all
-            get '/churches' do
-            	Church.all.to_json
+            get '/organizations' do
+                Organization.all.to_json
             end
 
             #view one
-            get '/church/:id' do
-            	church = Church.find(params[:id])
-            	return status 404 if church.nil
-            	church.to_json
+            get '/organization/:id' do
+                organization = Organization.get(params[:id])
+                return status 404 if organization.nil
+                organization.to_json
             end
 
             #create
-            post 'churches' do
-            	church = Church.new(params['church'])
-            	church.save
-            	status 201
+            post 'organizations' do
+                organization = Organization.new(params['organization'])
+                organization.save
+                status 201
             end
 
             #update
-            put '/church/:id' do
-            		church = Church.find(params[:id])
-            	return status 404 if church.nil
-            	church.update(params[:church])
-            	church.save
-            	status 202
+            put '/organizations/:id' do
+                    organization = Organization.get(params[:id])
+                return status 404 if organization.nil
+                organization.edit(params[:organization])
+                organization.save
+                status 202
             end
 
             #delete
-            delete '/churches/:id' do
-                church = Church.find(params[:id])
-                return status 404 if church.nil?
-                church.delete
+            delete '/organizations/:id' do
+                organization = Organization.get(params[:id])
+                return status 404 if organization.nil?
+                organization.delete
                 status 202
             end
 
@@ -53,15 +52,15 @@ module Implementation
             
 
             #list all
-            get '/church/:id/newsletters' do
-            	church = Church.find(params[:id])
-            	church.newsletters.to_json
+            get '/organization/:id/newsletters' do
+            	organization = Organization.get(params[:id])
+            	organization.newsletters.to_json
             end 
 
             #view one
-            get '/church/:id/current_newsletter' do
-            	church = Church.find(params[:id])
-            	church.current_newsletter.to_json
+            get '/organization/:id/current_newsletter' do
+            	organization = Organization.get(params[:id])
+            	organization.current_newsletter.to_json
             end
 
             #create
@@ -73,7 +72,7 @@ module Implementation
 
             #update
             put 'newsletters/:id' do
-            	newsletter = Newsletter.find(params[:id])
+            	newsletter = Newsletter.get(params[:id])
             	return status 404 if newsletter.nil?
             	newsletter.update(params[:newsletter])
             	newsletter.save
@@ -82,7 +81,7 @@ module Implementation
 
             #delete
             delete 'newsletters/:id' do
-            	newsletter = Newsletter.find(params[:id])
+            	newsletter = Newsletter.get(params[:id])
             	return status 404 if newsletter.nil?
             	newsletter.delete
             	status 202

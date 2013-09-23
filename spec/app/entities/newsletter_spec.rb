@@ -42,12 +42,12 @@ describe "Newsletter" do
     describe "#add_article" do
         it "adds an article to the newsletter" do
             newsletter.add_article(article)
-            newsletter.articles.should_not be nil
+            expect(newsletter.articles).to_not be_empty
         end
 
         it "adds an event to the newsletter" do
             newsletter.add_event(event)
-            newsletter.events.should_not be nil
+            expect(newsletter.events).to_not be_empty
         end
     end
 end 

@@ -17,8 +17,8 @@ module Implementation
     
     
     ##temporary_for_testing_purposes
-    get '/newsletters' do
-      newsletter = Newsletter.all.to_json
+    get '/organizations' do
+      newsletter = Organizations.all.to_json
     end
      
 

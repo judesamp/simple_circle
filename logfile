@@ -84,3 +84,10 @@ LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
 ERROR:  column "title" does not exist at character 14
 STATEMENT:  SELECT "id", "title", "publish_date", "created_at", "created_on", "updated_at", "updated_on" FROM "newsletters" ORDER BY "id"
+LOG:  database system was interrupted; last known up at 2013-09-17 22:06:53 EDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/73E59E98
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  role "postgres" does not exist

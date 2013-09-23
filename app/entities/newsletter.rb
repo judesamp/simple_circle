@@ -2,8 +2,9 @@ require 'dm-timestamps'
 
 class Newsletter
   include DataMapper::Resource
-  property :id,						Serial
+  property :id,						          Serial
   property :title,                  String
+  property :organization_id,        Integer
   property :publish_date,           DateTime
   property :created_at,             DateTime
   property :created_on,             Date
