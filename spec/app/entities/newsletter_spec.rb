@@ -1,12 +1,13 @@
 require_relative '../../spec_helper'
 require_relative '../../../app/entities/newsletter'
-require_relative '../../../app/entities/article'
-require_relative '../../../app/entities/event'
+require_relative '../../../app/entities/issue'
+
 
 describe "Newsletter" do
     let(:newsletter) {Newsletter.process}
-    let(:article) {Article.process_and_create_draft({:title => "generic title"})}
-    let(:event) {Event.process_and_create_event_draft({:event_name => "event name"})}
+    let(:issue) {Issue.process}
+    let(:issue2) {Issue.process}
+   
     
     describe "validations" do
         describe "" do 
@@ -19,35 +20,35 @@ describe "Newsletter" do
 
         describe "#process" do
             it "sets an id field" do
-                newsletter.id.should eq 1
+                expect(newsletter.id).to eq 1
             end
 
             it "sets a created_at field" do
-                newsletter.created_at.should_not be nil
+                expect(newsletter.created_at).to_not be nil
             end
-        end
-        
+        end 
     end
     
     describe "#edit" do
-        let (:today) {Date.today}
-        let(:attributes) {{ :title => "user title", :publish_date =>  today}}
+        let(:attributes) {{ :name => "newsletter name"}}
         it "sets edited fields" do
             newsletter.edit(attributes)
-            newsletter.title.should eq "user title"
-            newsletter.publish_date.should eq today
+            expect(newsletter.name).to eq "newsletter name"
         end
     end
-    
-    describe "#add_article" do
-        it "adds an article to the newsletter" do
-            newsletter.add_article(article)
-            expect(newsletter.articles).to_not be_empty
+
+    describe "#add_issue" do
+
+        it "adds an issue to the organization's newsletter" do
+            newsletter.add_issue(issue)
+            expect(newsletter.issues.class).to eq DataMapper::Associations::OneToMany::Collection
         end
 
-        it "adds an event to the newsletter" do
-            newsletter.add_event(event)
-            expect(newsletter.events).to_not be_empty
+        it "increments and sets the draft id number" do
+            newsletter.add_issue(issue)
+            newsletter.add_issue(issue2)
+            expect(issue.draft_id).to eq 1
+            expect(issue2.draft_id).to eq 2
         end
     end
 end 

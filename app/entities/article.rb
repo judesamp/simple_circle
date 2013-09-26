@@ -4,7 +4,7 @@ class Article
   
 
     property :id,                   Serial
-    property :newsletter_id,        Integer
+    property :issue_id,        Integer
     property :title,                String
     property :summary,              Text
     property :tags,                 String
@@ -13,14 +13,12 @@ class Article
     # property :img_url,              String
     # property :posted,               Date
 
-    belongs_to :newsletter
+    belongs_to :issue
 
     def self.process_and_create_draft(title)
         draft = create(title)
-
         if draft.valid?
             draft.save
-    # my_account is valid and has been saved
         else
             draft.errors.each do |error|
             puts error

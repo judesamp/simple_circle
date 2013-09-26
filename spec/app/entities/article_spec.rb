@@ -9,22 +9,21 @@ describe "Article" do
     describe "validations" do
         describe "validates title field" do 
             draft_without_title = Article.process_and_create_draft({})
-        #figure out how to test this
+            #figure out how to test this
         end
     end
     
     
     describe "initialization" do
-
         describe "#process_and_create_draft" do
 
             it "sets title field" do
-                draft.title.should eq "generic title"
+                expect(draft.title).to eq "generic title"
             end
 
 
             it "sets an id field" do
-                draft.id.should eq 1
+                expect(draft.id).to eq 1
             end
         end
             
@@ -33,27 +32,27 @@ describe "Article" do
             
             it "sets the title field" do
                 draft.edit_draft(valid_attributes)
-                draft.title.should eq "user article title"
+                expect(draft.title).to eq "user article title"
             end
             
             it "sets the tags field" do
                 draft.edit_draft(valid_attributes)
-                draft.tags.should eq "tag1, tag2, tag3"
+                expect(draft.tags).to eq "tag1, tag2, tag3"
             end
             
             it "sets article text field" do
                 draft.edit_draft(valid_attributes)
-                draft.article_text.should eq text
+                expect(draft.article_text).to eq text
             end
             
             it "sets the author field" do
                 draft.edit_draft(valid_attributes)
-                draft.author.should eq "Jeremy"
+                expect(draft.author).to eq "Jeremy"
             end
             
             it "sets the summary field " do
                 draft.edit_draft(valid_attributes)
-                draft.summary.should eq "This is the article summary."
+                expect(draft.summary).to eq "This is the article summary."
             end
         end
     end    

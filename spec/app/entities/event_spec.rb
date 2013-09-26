@@ -18,53 +18,52 @@ describe "Event" do
         describe "#process_and_create_event_draft" do
 
             it "sets event_name field" do
-                draft.event_name.should eq "generic event name"
+                expect(draft.event_name).to eq "generic event name"
             end
 
 
             it "sets an id field" do
-                draft.id.should eq 1
+                expect(draft.id).to eq 1
             end
         end
             
         describe "#edit_draft" do
             
-            
             it "sets the title field" do
                 draft.edit_draft(valid_attributes)
-                draft.event_name.should eq "generic event name"
+                expect(draft.event_name).to eq "generic event name"
             end
             
             it "sets article text field" do
                 draft.edit_draft(valid_attributes)
-                draft.description.should eq description
+                expect(draft.description).to eq description
             end
 
             it "sets the author field" do
-                 draft.edit_draft(valid_attributes)
-                 draft.author.should eq "Jeremy"
+                draft.edit_draft(valid_attributes)
+                expect(draft.author).to eq "Jeremy"
             end
 
             it "sets the event_start_date" do
                 draft.edit_draft(valid_attributes)
-                draft.event_start_date.year.should == 2013
-                draft.event_start_date.month.should == 10
-                draft.event_start_date.day.should == 30
+                expect(draft.event_start_date.year).to eq 2013
+                expect(draft.event_start_date.month).to eq 10
+                expect(draft.event_start_date.day).to eq 30
             end
 
             
             it "sets the event_end_date" do
                 draft.edit_draft(valid_attributes)
-                draft.event_end_date.year.should == 2013
-                draft.event_end_date.month.should == 11
-                draft.event_end_date.day.should == 01
+                expect(draft.event_end_date.year).to eq 2013
+                expect(draft.event_end_date.month).to eq 11
+                expect(draft.event_end_date.day).to eq 01
             end
 
              it "sets the expire_on date" do
                 draft.edit_draft(valid_attributes)
-                draft.expire_on.year.should == 2013
-                draft.expire_on.month.should == 11
-                draft.expire_on.day.should == 02
+                expect(draft.expire_on.year).to eq 2013
+                expect(draft.expire_on.month).to eq 11
+                expect(draft.expire_on.day).to eq 02
             end
 
 

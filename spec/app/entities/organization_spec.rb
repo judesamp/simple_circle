@@ -19,12 +19,10 @@ describe "Organization" do
         describe "#process" do
 
             it "sets an id field" do
-                organization.id.should eq 1
+                expect(organization.id).to eq 1
             end
         end
-
-
-     end
+	end
     
 
     describe "usage methods" do
@@ -42,8 +40,5 @@ describe "Organization" do
 	    		expect(organization.newsletters).to_not be_empty
 	    	end
 		end
-
-
-		
 	end
 end

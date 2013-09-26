@@ -3,20 +3,26 @@ require 'dm-timestamps'
 class Newsletter
   include DataMapper::Resource
   property :id,						          Serial
-  property :title,                  String
+  property :name,                  String
   property :organization_id,        Integer
-  property :publish_date,           DateTime
   property :created_at,             DateTime
   property :created_on,             Date
   property :updated_at,             DateTime
   property :updated_on,             Date
 
-  has n, :articles
-  has n, :events
-  # belongs_to :church
+  belongs_to :organization
+  has n, :issues
 
   def self.process
     newsletter = create
+    if newsletter.valid?
+      newsletter.save
+      newsletter
+    else
+      errors = [false]
+      newsletter.errors.each {|error| errors.push(error)}
+      errors
+    end
   end
   
   def edit(new_values)
@@ -24,17 +30,13 @@ class Newsletter
     self.save
   end
   
-  
-  
-  def add_article(article)
-    self.articles << article
+  def add_issue(issue)
+    self.issues << issue
+    increment_issue_draft_id(issue)
+    self.save
   end
-  
-  def add_event(event)
-    self.events << event
-  end
-  
-  # def add_announcements()
-  # end
 
+  def increment_issue_draft_id(issue)
+    issue.draft_id = self.issues.count + 1
+  end
 end

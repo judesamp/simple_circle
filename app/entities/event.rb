@@ -3,7 +3,7 @@ class Event
   	validates_presence_of :event_name
   
 	  property :id,                   Serial
-	  property :newsletter_id,				Integer
+	  property :issue_id,				      Integer
 	  property :event_name,           String
 	  property :description,          Text
 	  property :author,               String
@@ -12,19 +12,16 @@ class Event
 #   property :posted,               Date
 		property :expire_on,            Date
 #  
-  belongs_to :newsletter
+    belongs_to :issue
 
 
   def self.process_and_create_event_draft(event_name)
       event_draft = create(event_name)
-
-      
       if event_draft.valid?
-          #draft.save
-  # my_account is valid and has been saved
+        event_draft.save
       else
-          event_draft.errors.each do |error|
-          puts error
+        event_draft.errors.each do |error|
+        puts error
       end
     end
     event_draft

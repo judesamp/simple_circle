@@ -1,6 +1,5 @@
 require 'rubygems'
-#require './domain/entities/game_domain'
-# 
+
 Dir.glob(File.expand_path("./implementation/api/v1/routes") +"/*_routes.rb").each do |file|
   require file
 end
