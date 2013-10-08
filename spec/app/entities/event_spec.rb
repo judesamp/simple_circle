@@ -7,8 +7,11 @@ describe "Event" do
     let(:valid_attributes) {{ :event_name => "generic event name", :description => description, :author => "Jeremy", :event_start_date => Date.new(2013, 10, 30), :event_end_date => Date.new(2013, 11, 01), :expire_on => Date.new(2013, 11, 02)}}
     
     describe "validations" do
-        describe "validates event_name field" do 
-            draft_without_event_name = Event.process_and_create_event_draft({})
+        describe "validates event_name field" do
+            it "sets event_name field" do
+                draft_without_event_name = Event.process_and_create_event_draft({})
+                expect(draft_without_event_name).to eq "Event: Event name must not be blank"
+            end
         end
     end
     
@@ -20,7 +23,6 @@ describe "Event" do
             it "sets event_name field" do
                 expect(draft.event_name).to eq "generic event name"
             end
-
 
             it "sets an id field" do
                 expect(draft.id).to eq 1

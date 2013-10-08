@@ -18,9 +18,9 @@
       <div class="navbar-inner">
         <a class="brand" href="#">SimplyCircular</a>
           <ul class="nav  pull-right">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Your Account</a></li>  
+          <li>{{#link-to 'index'}}Home{{/link-to}}</li>
+          <li>{{#link-to 'about'}}About{{/link-to}}</li>
+          <li>{{#link-to 'account'}}Your Account{{/link-to}}</li>  
           </ul>
       </div>
     </div>
@@ -32,10 +32,12 @@
            <div class="navbar-inner side_nav">
             <div class="wrapper">
               <ul class="sidebar_list">
-              <li class="borderline"><a href="#">Home</a></li>
-              <li class="borderline"><a href="#">Add an Article</a></li>
-              <li class="borderline"><a href="#">Add an Event</a></li>
-              <li><a href="#">Preview</a></li>  
+
+              <li class="borderline">{{partial "organization"}}</li>
+              <li class="borderline">{{#link-to 'issues.select'}}Drafts{{/link-to}}</li>
+              
+              <br />
+                {{outlet "nav"}}
               </ul>
               </div>
             </div>
@@ -50,25 +52,119 @@
         </div>
      
  
-
+</script>
 
 
    
+  
+
+
+
+<script type="text/x-handlebars" id="greeting">
+
+  {{#if name}}
+    <h1>Create a Draft</h1>
+    <p>Now you&#39;re ready to create a draft issue of your newsletter! Once created, you can access it by clicking "Drafts" in the sidebar menu on your home page.</p>
+
+  {{else}}
+    <h1>Creating a Newsletter</h1>
+
+    <p>Are you ready to create your newsletter? Have you chosen a name for it? We need one to get you started. Don&#39;t worry, you can change this later. Enter a name for your newsletter in the textbox below:</p>
+
+    <form action="#" method="post">
+      <label for="newsletter_name">Your Newsletter&#39;s Name:
+      <input type="text" name="newsletter_name"></label>
+      <input type="submit" name="submit" value="Submit Form">
+    </form>
+  {{/if}}
+</script>
+
+<script type="text/x-handlebars" id="_organization">
+    <li>{{#link-to 'index'}} {{name}} {{/link-to}}</li>
+    <li>{{#link-to 'newsletter'}} Newsletter {{/link-to}}</li>
+</script>
+
+
+
+<script type="text/x-handlebars" id="issue/add_article">
+  <h1>Adding an article</h1>
+
+    
+    
+
+  
+    <p>You need to create an draft in order to add an article. You can do this by following the procedures described here.</p>
+ 
+</script>
+
+<script type="text/x-handlebars" id="add_event">
+  <h1>Adding an event</h1>
+</script>
+
+<script type="text/x-handlebars" id="issues/select">
+  <h1>Drafts</h1>
+  <p>You can begin editing a draft by clicking on its name in the left sidebar. If you want to start fresh, click the "Create Draft" link.</p>
+</script>
+
+<script type="text/x-handlebars" id="preview">
+  <h1>Previewing the newsletter</h1>
+</script>
+
+<script type="text/x-handlebars" id="secondary_greeting">
+  <h1>Secondary greeting</h1>
+</script>
+
+
+
+<script type="text/x-handlebars" id="issues">
+    <li class="borderline">{{#link-to 'index'}}Create Draft{{/link-to}}</li>
+    {{#each}}
+      <li>{{#link-to 'issue' this}} {{name}} {{/link-to}}</li>
+    {{/each}}
+
+    
+</script>
+
+<script type="text/x-handlebars" id="issue">
+  {{name}}
+  {{#if isEditing}}
+  {{partial 'issue/edit'}}
+  <button {{action 'doneEditing'}}>Done</button>
+  {{else}}
+  <button {{action 'edit'}}>Edit</button>
+  {{/if}}
+  {{#link-to "issue.add_article"}}Add Article{{/link-to}}
+  {{outlet}}
+</script>
+
+  <script type="text/x-handlebars" id="issue/_edit">
+    <p>{{input type="text" value=name}}</p>
+  </script>
+    
+</script>
+
+<script type="text/x-handlebars" id="about">
+  <h1>About</h1>
+</script>
+
+<script type="text/x-handlebars" id="account">
+  <h1>Your Account</h1>
+</script>
+
+<script type="text/x-handlebars" id="newsletter">
+  {{name}}
+  {{#if isEditing}}
+  {{partial 'newsletter/edit'}}
+  <button {{action 'doneEditing'}}>Done</button>
+  {{else}}
+  <button {{action 'edit'}}>Change Newsletter Name</button>
+  {{/if}}
+</script>
+
+<script type="text/x-handlebars" id="newsletter/_edit">
+    <p>{{input type="text" value=name}}</p>
   </script>
 
-
-
-<script type="text/x-handlebars" data-template-name="index">
-  <h1>Creating a Newsletter</h1>
-
-  <p>Are you ready to create your newsletter? Have you chosen a name for it? We need one to get you started. Don&#39;t worry, you can change this later. Enter a name for your newsletter in the textbox below:</p>
-
-  <form action="#" method="post">
-    <label for="newsletter_name">Your Newsletter&#39;s Name:
-    <input type="text" name="newsletter_name"></label>
-    <input type="submit" name="submit" value="Submit Form">
-  </form>
-</script>
 
 
 

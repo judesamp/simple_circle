@@ -98,3 +98,12 @@ LOG:  database system is shut down
 LOG:  database system was shut down at 2013-09-23 23:18:19 EDT
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-01 19:45:52 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

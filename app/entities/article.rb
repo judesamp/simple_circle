@@ -4,7 +4,7 @@ class Article
   
 
     property :id,                   Serial
-    property :issue_id,        Integer
+    property :issue_id,             Integer
     property :title,                String
     property :summary,              Text
     property :tags,                 String
@@ -20,8 +20,11 @@ class Article
         if draft.valid?
             draft.save
         else
+            begin
+            rescue
             draft.errors.each do |error|
             puts error
+            end
         end
       end
       draft

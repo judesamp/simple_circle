@@ -8,6 +8,7 @@ require 'pry-doc'
 require 'data_mapper'
 require 'pg'
 require 'dm-postgres-adapter'
+require "dm-noisy-failures"
 
 # Bundler Setup.
 

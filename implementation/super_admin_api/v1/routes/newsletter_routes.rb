@@ -1,5 +1,5 @@
 module Implementation
-  module API
+  module Super_AdminAPI
     class V1 < Sinatra::Base
 
 

@@ -1,14 +1,15 @@
+require "dm_noisy_failures"
+
 require 'dm-timestamps'
 
 class Issue
   include DataMapper::Resource
   property :id,						           Serial
   property :newsletter_id,           Integer
-  property :draft_id,                Integer
-  property :issue_number,                 String
+  property :issue_number,            String
   # property :organization_id,        Integer
-  property :publish_on,           DateTime
-  property :published_on,           DateTime
+  property :publish_on,              DateTime
+  property :published_on,            DateTime
   # property :created_at,             DateTime
   # property :created_on,             Date
   # property :updated_at,             DateTime
@@ -26,12 +27,6 @@ class Issue
     else
       issue.errors.each {|error| puts error}
     end
-  end
-
-  def set_draft_id(issue)
-    puts "here we go #{issue}!"
-    newsletter = Newsletter.get(issue.newsletter_id)
-    puts newsletter.inspect
   end
   
   def edit(new_values)

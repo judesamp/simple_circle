@@ -21,10 +21,6 @@ describe "Issue" do
     		expect(issue.id).to eq 1
     	end
 
-    	it "should have a draft_id field" do
-    		expect(issue.draft_id).to eq nil
-    	end
-
     	it "should have a issue number field" do
     		expect(issue.issue_number).to eq nil
     	end
@@ -57,18 +53,11 @@ describe "Issue" do
     	end
    	end
 
-
    	describe "issue added to newsletter" do
  		 it "an issue is added to the organization's newsletter" do
           newsletter.add_issue(issue)
           expect(newsletter.issues.class).to eq DataMapper::Associations::OneToMany::Collection
       end
 
-      it "increments and sets the issue's draft id number" do
-          newsletter.add_issue(issue)
-          newsletter.add_issue(issue2)
-          expect(issue.draft_id).to eq 1
-          expect(issue2.draft_id).to eq 2
-      end
    	end
  end

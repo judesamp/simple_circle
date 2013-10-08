@@ -1,3 +1,4 @@
+require "dm_noisy_failures"
 require 'dm-timestamps'
 
 class Newsletter
@@ -32,11 +33,6 @@ class Newsletter
   
   def add_issue(issue)
     self.issues << issue
-    increment_issue_draft_id(issue)
     self.save
-  end
-
-  def increment_issue_draft_id(issue)
-    issue.draft_id = self.issues.count + 1
   end
 end

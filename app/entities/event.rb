@@ -1,3 +1,5 @@
+require "dm_noisy_failures"
+
 class Event
   include DataMapper::Resource
   	validates_presence_of :event_name
@@ -16,16 +18,14 @@ class Event
 
 
   def self.process_and_create_event_draft(event_name)
+    begin
       event_draft = create(event_name)
-      if event_draft.valid?
-        event_draft.save
-      else
-        event_draft.errors.each do |error|
-        puts error
-      end
+
+    rescue DataMapper::SaveFailureError => e
+      return e.message
     end
-    event_draft
-   end
+      event_draft
+  end
 
 	def edit_draft(attr)
     self.attributes = attr

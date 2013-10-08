@@ -1,3 +1,5 @@
+require "dm_noisy_failures"
+
 class Organization
   include DataMapper::Resource
 

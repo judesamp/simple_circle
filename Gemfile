@@ -6,6 +6,7 @@ gem 'mustache'
 gem 'data_mapper'
 gem 'pg'
 gem "dm-postgres-adapter"
+gem "dm-noisy-failures", "~> 0.2.3"
  
 group :development do
   gem 'thin'

@@ -8,7 +8,7 @@ describe "Article" do
     
     describe "validations" do
         describe "validates title field" do 
-            draft_without_title = Article.process_and_create_draft({})
+            # draft_without_title = Article.process_and_create_draft({})
             #figure out how to test this
         end
     end

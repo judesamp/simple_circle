@@ -17,7 +17,6 @@ describe "Newsletter" do
     
 
     describe "initialization" do
-
         describe "#process" do
             it "sets an id field" do
                 expect(newsletter.id).to eq 1
@@ -42,13 +41,6 @@ describe "Newsletter" do
         it "adds an issue to the organization's newsletter" do
             newsletter.add_issue(issue)
             expect(newsletter.issues.class).to eq DataMapper::Associations::OneToMany::Collection
-        end
-
-        it "increments and sets the draft id number" do
-            newsletter.add_issue(issue)
-            newsletter.add_issue(issue2)
-            expect(issue.draft_id).to eq 1
-            expect(issue2.draft_id).to eq 2
         end
     end
 end 
