@@ -6,7 +6,7 @@ require_relative '../../../app/entities/newsletter'
 
 
 describe "Issue" do
-		let(:newsletter) {Newsletter.process}
+		let(:newsletter) {Newsletter.process({:title => "Original Newsletter Name"})}
     let(:issue) {Issue.process}
     let(:issue2) {Issue.process}
     let(:article) {Article.process_and_create_draft({:title => "generic title"})}

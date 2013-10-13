@@ -2,12 +2,14 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('greeting');
-  this.resource('add_event');
-  this.resource('preview');
+  
+  
   this.resource('issues', function() {
   	this.route('select');
   	this.resource('issue', {path: ":issue_id"}, function() {
   		this.route('add_article');
+  		this.route('add_event');
+  		this.route('preview');
   });
   });
   this.resource('newsletter');

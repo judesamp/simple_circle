@@ -1,0 +1,13 @@
+ renderTemplate: function() {
+    this.render({ outlet: 'issues' });
+  }
+
+
+
+  
+
+  <li class="borderline">{{#link-to 'add_article'}}Add an Article{{/link-to}}</li>
+              <li class="borderline">{{#link-to 'add_event'}}Add an Event{{/link-to}}</li>
+              <li>{{#link-to 'preview'}}Preview{{/link-to}}</li> 
+
+

@@ -107,3 +107,9 @@ LOG:  database system is shut down
 LOG:  database system was shut down at 2013-10-01 19:45:52 EDT
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+ERROR:  duplicate key value violates unique constraint "newsletters_pkey"
+DETAIL:  Key (id)=(9) already exists.
+STATEMENT:  INSERT INTO "newsletters" ("name", "created_at", "created_on", "updated_at", "updated_on") VALUES ('dude', '2013-10-11T20:32:23-04:00', '2013-10-11', '2013-10-11T20:32:23-04:00', '2013-10-11') RETURNING "id"
+ERROR:  duplicate key value violates unique constraint "organizations_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "organizations" ("name") VALUES ('samples') RETURNING "id"

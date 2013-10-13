@@ -34,7 +34,7 @@ div.navbar {
 
 .content_box {
 	text-align: justify;
-	width: 80%;
+	width: 88%;
 	margin: auto;
 	font-size: 150%;
 	line-height: 150%;
@@ -46,6 +46,27 @@ div.navbar {
 
 .active {
 	font-weight: bold;
+}
+
+.nav_rule {
+	border-width: 3px 0;
+}
+
+.centered {
+	text-align:center;
+}
+
+#article_form, #event_form {
+	text-align:left;
+	margin-top: 20px;
+}
+
+.issue_table {
+	margin:auto;
+}
+
+.shaded {
+	background-color: lightgray;
 }
 
 /* Large desktop */

@@ -5,7 +5,7 @@ require_relative '../../../app/entities/newsletter'
 describe "Organization" do
     let(:organization) {Organization.process({})}
     let(:valid_attributes) {{ :name => "org name"}}
-    let(:newsletter) {Newsletter.process}
+    let(:newsletter) {Newsletter.process({:title => "Original Newsletter Name"})}
     
     describe "validations" do
         describe "validates orgnaization name field" do 
@@ -24,7 +24,6 @@ describe "Organization" do
         end
 	end
     
-
     describe "usage methods" do
 
 	    describe "#edit" do 

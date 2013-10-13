@@ -12,21 +12,21 @@ class Organization
   
   has n, :newsletters
 
-
   def self.process(attributes)
+    begin
       organization = create(attributes)
 
-      if organization.valid?
- 
-      else
-         organization.errors.each {|error| puts error}
-      end
-    organization
+    rescue DataMapper::SaveFailureError => e
+      return e.message
+    end
   end
-
 
   def edit(attr)
   	self.attributes = attr
+  end
+
+  def delete_org
+    self.destroy
   end
 
   def add_newsletter(newsletter)

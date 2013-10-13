@@ -3,8 +3,11 @@ require 'dm-timestamps'
 
 class Newsletter
   include DataMapper::Resource
+  validates_presence_of :title
+
   property :id,						          Serial
-  property :name,                  String
+  property :title,                  String
+  property :subtitle,               String
   property :organization_id,        Integer
   property :created_at,             DateTime
   property :created_on,             Date
@@ -14,15 +17,12 @@ class Newsletter
   belongs_to :organization
   has n, :issues
 
-  def self.process
-    newsletter = create
-    if newsletter.valid?
-      newsletter.save
-      newsletter
-    else
-      errors = [false]
-      newsletter.errors.each {|error| errors.push(error)}
-      errors
+  def self.process(newsletter_name)
+    begin
+      newsletter = create(newsletter_name)
+
+    rescue DataMapper::SaveFailureError => e
+      return e.message
     end
   end
   

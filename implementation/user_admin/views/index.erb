@@ -87,18 +87,114 @@
 
 
 <script type="text/x-handlebars" id="issue/add_article">
-  <h1>Adding an article</h1>
+  <h2 class="centered">Adding an Article</h2>
+  <div class="issue_form">
+    <form id="article_form" action="#" method="post">
+      <table class="issue_table">
 
-    
-    
+        <tr>
+          <td>
+            <label for="article_title">Article Title:</label>
+          </td>
+          <td>
+            <input type="text" name="article_title">
+          </td>
+        </tr>
 
-  
-    <p>You need to create an draft in order to add an article. You can do this by following the procedures described here.</p>
- 
+        <tr>
+          <td>
+            <label for="author">Author:</label>
+          </td>
+          <td>
+            <input type="text" name="author">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="article_text">Text:</label>
+          </td>
+          <td>
+            <input type="text" name="article_text">
+          </td>
+        </tr>
+
+        <tr class="centered">
+          <td colspan="2">
+            <input type="submit" name="submit" value="Submit Form">
+          </td>
+        </tr>
+
+      </table>
+    </form>
+  </div>
 </script>
 
-<script type="text/x-handlebars" id="add_event">
-  <h1>Adding an event</h1>
+<script type="text/x-handlebars" id="issue/add_event">
+  <h2 class="centered">Adding an event</h2>
+
+  <div class="issue_form">
+    <form id="event_form" action="#" method="post">
+      <table class="issue_table">
+
+        <tr>
+          <td>
+            <label for="event_name">Event Name:</label>
+          </td>
+
+          <td>
+            <input type="text" name="event_name">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="description">Description:</label>
+          </td>
+          <td>
+            <input type="text" name="description">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="location">Location:</label>
+          </td>
+          <td>
+            <input type="text" name="location">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="contact">Contact:</label>
+          </td>
+          <td>
+            <input type="text" name="contact">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="recurring">Recurring:</label>
+          </td>
+          <td>
+            <input type="text" name="recurring">
+          </td>
+        </tr>
+
+
+
+        <tr class="centered">
+          <td colspan="2">
+            <input type="submit" name="submit" value="Submit Form">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+ 
+ 
 </script>
 
 <script type="text/x-handlebars" id="issues/select">
@@ -106,8 +202,8 @@
   <p>You can begin editing a draft by clicking on its name in the left sidebar. If you want to start fresh, click the "Create Draft" link.</p>
 </script>
 
-<script type="text/x-handlebars" id="preview">
-  <h1>Previewing the newsletter</h1>
+<script type="text/x-handlebars" id="issue/preview">
+  <h1 class="centered">Previewing the newsletter</h1>
 </script>
 
 <script type="text/x-handlebars" id="secondary_greeting">
@@ -120,21 +216,36 @@
     <li class="borderline">{{#link-to 'index'}}Create Draft{{/link-to}}</li>
     {{#each}}
       <li>{{#link-to 'issue' this}} {{name}} {{/link-to}}</li>
-    {{/each}}
-
-    
+    {{/each}}    
 </script>
 
 <script type="text/x-handlebars" id="issue">
-  {{name}}
-  {{#if isEditing}}
-  {{partial 'issue/edit'}}
-  <button {{action 'doneEditing'}}>Done</button>
-  {{else}}
-  <button {{action 'edit'}}>Edit</button>
-  {{/if}}
-  {{#link-to "issue.add_article"}}Add Article{{/link-to}}
-  {{outlet}}
+  <div class="centered">
+    <p><small>You are working on a draft named: <strong>{{name}}.</strong></small></p>
+    
+    {{#if isEditing}}
+    
+      {{partial 'issue/edit'}}
+    <button {{action 'doneEditing'}}>Done</button>
+    {{else}}
+       {{#link-to "issue.add_article"}}<button>Add Article</button>{{/link-to}}
+       {{#link-to "issue.add_event"}}<button>Add Event</button>{{/link-to}}
+       {{#link-to "issue.preview"}}<button>Preview Draft</button>{{/link-to}}
+       <button {{action 'edit'}}>Edit Draft Name</button>
+    {{/if}}
+    <br />
+
+
+    </div>
+    <hr class="nav_rule">
+    
+    
+    
+    {{outlet}}
+  
+  
+
+
 </script>
 
   <script type="text/x-handlebars" id="issue/_edit">
@@ -152,7 +263,7 @@
 </script>
 
 <script type="text/x-handlebars" id="newsletter">
-  {{name}}
+  <p><small>The title of your newsletter is: <strong>{{name}}</strong></small></p>
   {{#if isEditing}}
   {{partial 'newsletter/edit'}}
   <button {{action 'doneEditing'}}>Done</button>
