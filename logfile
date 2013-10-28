@@ -113,3 +113,84 @@ STATEMENT:  INSERT INTO "newsletters" ("name", "created_at", "created_on", "upda
 ERROR:  duplicate key value violates unique constraint "organizations_pkey"
 DETAIL:  Key (id)=(1) already exists.
 STATEMENT:  INSERT INTO "organizations" ("name") VALUES ('samples') RETURNING "id"
+ERROR:  relation "articles" does not exist
+STATEMENT:  ALTER TABLE "articles" ADD COLUMN "issue_id" INTEGER
+ERROR:  duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+DETAIL:  Key (typname, typnamespace)=(events_id_seq, 2200) already exists.
+STATEMENT:  CREATE TABLE "events" ("id" SERIAL NOT NULL, "issue_id" INTEGER, "event_name" VARCHAR(50), "description" TEXT, "author" VARCHAR(50), "event_start_date" DATE, "event_end_date" DATE, "expire_on" DATE, PRIMARY KEY("id"))
+ERROR:  column "id" of relation "articles" already exists
+STATEMENT:  ALTER TABLE "articles" ADD COLUMN "id" SERIAL NOT NULL
+ERROR:  relation "newsletters" already exists
+STATEMENT:  CREATE TABLE "newsletters" ("id" SERIAL NOT NULL, "title" VARCHAR(50), "subtitle" VARCHAR(50), "organization_id" INTEGER, "created_at" TIMESTAMP, "created_on" DATE, "updated_at" TIMESTAMP, "updated_on" DATE, PRIMARY KEY("id"))
+ERROR:  constraint "events_issue_fk" of relation "events" does not exist
+STATEMENT:  ALTER TABLE "events" DROP CONSTRAINT "events_issue_fk"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-10-15T11:14:04-04:00', '2013-10-15', '2013-10-15T11:14:04-04:00', '2013-10-15') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-10-15T11:14:49-04:00', '2013-10-15', '2013-10-15T11:14:49-04:00', '2013-10-15') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-10-15T11:15:44-04:00', '2013-10-15', '2013-10-15T11:15:44-04:00', '2013-10-15') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-10-15T11:18:52-04:00', '2013-10-15', '2013-10-15T11:18:52-04:00', '2013-10-15') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-10-15T11:19:40-04:00', '2013-10-15', '2013-10-15T11:19:40-04:00', '2013-10-15') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-10-15T11:20:49-04:00', '2013-10-15', '2013-10-15T11:20:49-04:00', '2013-10-15') RETURNING "id"
+ERROR:  relation "issues" does not exist
+STATEMENT:  ALTER TABLE "articles" ADD CONSTRAINT "articles_issue_fk" FOREIGN KEY ("issue_id") REFERENCES "issues" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+ERROR:  relation "articles" does not exist
+STATEMENT:  ALTER TABLE "articles" ADD CONSTRAINT "articles_issue_fk" FOREIGN KEY ("issue_id") REFERENCES "issues" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+ERROR:  relation "issues" does not exist
+STATEMENT:  ALTER TABLE "articles" ADD CONSTRAINT "articles_issue_fk" FOREIGN KEY ("issue_id") REFERENCES "issues" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+ERROR:  cannot drop table issues because other objects depend on it
+DETAIL:  constraint articles_issue_fk on table articles depends on table issues
+	constraint events_issue_fk on table events depends on table issues
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "issues"
+ERROR:  constraint "issues_newsletter_fk" of relation "issues" does not exist
+STATEMENT:  ALTER TABLE "issues" DROP CONSTRAINT "issues_newsletter_fk"
+ERROR:  relation "events" does not exist
+STATEMENT:  ALTER TABLE "events" ADD COLUMN "expire_on" DATE
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+WARNING:  pgstat wait timeout
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-22 10:09:34 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-24 22:21:35 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down

@@ -1,4 +1,3 @@
-require "dm_noisy_failures"
 require 'dm-timestamps'
 
 class Newsletter
@@ -24,6 +23,10 @@ class Newsletter
     rescue DataMapper::SaveFailureError => e
       return e.message
     end
+  end
+
+  def resource_uri
+    "/newsletters/#{self.id}"
   end
   
   def edit(new_values)

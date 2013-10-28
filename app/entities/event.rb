@@ -29,6 +29,7 @@ class Event
 
 	def edit_draft(attr)
     self.attributes = attr
+    self.save
   end
 
 

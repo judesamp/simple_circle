@@ -7,7 +7,6 @@ class Issue
   property :id,						           Serial
   property :newsletter_id,           Integer
   property :issue_number,            String
-  # property :organization_id,        Integer
   property :publish_on,              DateTime
   property :published_on,            DateTime
   # property :created_at,             DateTime
@@ -19,15 +18,19 @@ class Issue
   has n, :events
   belongs_to :newsletter
 
-  def self.process
-    issue = create
-    if issue.valid?
-      issue.save
-      issue
-    else
-      issue.errors.each {|error| puts error}
+  def self.process(attributes)
+    begin
+      issue = create(attributes)
+
+    rescue DataMapper::SaveFailureError => e
+      return e.message
     end
   end
+
+  def resource_uri
+    "/issues/#{self.id}"
+  end
+
   
   def edit(new_values)
     self.attributes = new_values

@@ -2,3 +2,208 @@ superuser api /// implementation
 church_admin api /// implementation
 newsletter view/api /// implementation
 mobile api /// implementation
+
+
+
+@issues
+Feature: Creating an issue 
+  As a user of the User Admin API
+  In order to spread info and news among members of my organization
+  I want to create an issue of my newsletter
+  
+  Background:
+    Given I have already signed up my organization and created a newsletter
+    And I am a valid user of the User Admin API
+    And I send and accept JSON
+    And I haven't created a newsletter
+  
+  Scenario: Creating an issue of my newsletter
+    Given I send a POST request to "/user_admin_api/newsletters/1/issues"
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    And the JSON response should be an issue array containing the following elements
+      | newsletter_id  |
+    Then the JSON response body should return the following values: 
+      | hmm |
+      | hmm |
+
+  Scenario: Retrieving a specific issue of a specific newsletter
+    Given I have already created a newsletter by sending a POST request to "/user_admin_api/organizations/1/newsletters" with a valid title
+    And I send a GET request to "/user_admin_api/newsletters/1/issues/1"
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    And the JSON response body should have the following elements:
+      | hmm    | 
+      | hmm |
+    And the JSON response body for issues should have the following rel and href values:
+      | rel    | href      |
+      | self   | /issues/1 |
+     
+
+
+     @newsletters
+Feature: Creating a Newsletter 
+  As a user of the User Admin API
+  In order to spread info and news among members of my organization
+  I want to create a newsletter
+  
+  Background:
+    Given I have already signed up my organization
+    And I am a valid user of the User Admin API
+    And I send and accept JSON
+    And I haven't created a newsletter
+  
+  Scenario: Creating a newsletter
+    Given I send a POST request to "/user_admin_api/organizations/1/newsletters" with a valid title and subtitle
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    And the JSON response should be a newsletter array containing the following elements
+      | title            |
+      | subtitle         |
+      | organization_id  |
+    Then the JSON response body should return the following values: 
+      | newsletter_title    |
+      | newsletter_subtitle |
+
+  Scenario: Retrieving a specific newsletter
+    Given I have already created a newsletter by sending a POST request to "/user_admin_api/organizations/1/newsletters" with a valid organization title
+    And I send a GET request to "/user_admin_api/organizations/1/newsletters"
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    And the JSON response body should have the following elements:
+      | title    | 
+      | subtitle |
+    And the JSON response body for newsletters should have the following rel and href values:
+      | rel    | href           |
+      | self   | /newsletters/1 |
+
+
+
+
+@newsletter
+
+Given(/^I have already signed up my organization$/) do
+ 	post "/user_admin_api/organizations?name=myorgname&email=jerome@example.org"
+end
+
+Given(/^I haven't created a newsletter$/) do
+	#TODO
+end
+
+Given(/^I send a POST request to "(.*?)" with a valid title and subtitle$/) do |path|
+  full_path = path + "?title=newsletter_title&subtitle=newsletter_subtitle"
+  post full_path
+end
+
+Then(/^the JSON response should be an array containing the following elements$/) do |elements|
+ elements.raw.flatten.map {|element| expect(last_response.body).to include('"'+ element + '"') }
+end
+
+Then(/^the JSON response should be a newsletter array containing the following elements$/) do |elements|
+  elements.raw.flatten.map {|element| expect(last_response.body).to include('"'+ element + '"') }
+end
+
+Given(/^I have already created a newsletter by sending a POST request to "(.*?)" with a valid organization title$/) do |path|
+  full_path = path + "?title=my_newsletter_title&subtitle=my_newsletter_subtitle"
+  post full_path
+end
+
+Then(/^the JSON response body for newsletters should have the following rel and href values:$/) do |table|
+  table.map_headers {|header| header.to_sym }
+  link_collection = JSON.parse(last_response.body)["links"]
+  table.hashes.each do |row|
+    selected = link_collection.find { |l| l['rel'] == row[:rel] }
+    expect(selected['href']).to eq row[:href]
+  end
+end
+
+
+@organization
+Given(/^I haven't created an organization$/) do
+  #NECESSARY?
+end
+
+Given(/^I send a POST request to "(.*?)" with a valid organization name and email$/) do |path|
+  full_path = path + "?name=myorgname&email=jerome@example.org"
+  post full_path
+end
+
+Then(/^the JSON response headers should set appropriately$/) do
+  expect(last_response.header["Content-Type"]).to eq "application/json;charset=utf-8"
+  expect(last_response.header["Accept"]).to eq "application/json"
+end
+
+Then(/^the response code should be "(.*?)"$/) do |status|
+   expect(last_response.status).to eq status.to_i
+end
+
+Then(/^the JSON response should contain the following elements$/) do |elements|
+   elements.raw.flatten.map {|element| expect(last_response.body).to include('"'+ element + '"') }
+end
+
+Then(/^the JSON response body should return the following values:$/) do |elements|
+  elements.raw.flatten.map {|element| expect(last_response.body).to include('"'+ element + '"') }
+end
+
+Given(/^I have already signed up as an organzation by sending a POST request to "(.*?)" with a valid organization name and email$/) do |path|
+  full_path = path + "?name=myorgname2&email=jerome2@example.org"
+  post full_path
+end
+
+And(/^I send a GET request to "(.*?)"$/) do |path|
+  get path
+end
+
+Then(/^the JSON response body should have the following elements:$/) do |elements|
+  elements.raw.flatten.map {|element| expect(last_response.body).to include('"'+ element + '":') }
+end
+
+Then(/^the JSON response body should have the following rel and href values:$/) do |table|
+  table.map_headers {|header| header.to_sym }
+  link_collection = JSON.parse(last_response.body)["links"]
+  table.hashes.each do |row|
+    selected = link_collection.find { |l| l['rel'] == row[:rel] }
+    expect(selected['href']).to eq row[:href]
+  end
+end
+
+
+@organizations
+Feature: Signing up as or Creating an Organization 
+  As a user of the User Adimin API
+  In order to spread info and news among members of my organization
+  I want to sign up as an organization
+  
+  Background:
+    Given I am a valid user of the User Admin API
+    And I send and accept JSON
+    And I haven't created an organization
+  
+  Scenario: Signing up as (or creating) an organization
+    Given I send a POST request to "/user_admin_api/organizations" with a valid organization name and email
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    And the JSON response should contain the following elements
+      | name  |
+      | email |
+    Then the JSON response body should return the following values: 
+      | myorgname          |
+      | jerome@example.org |
+   
+
+  Scenario: Retrieving a specific organization
+    Given I have already signed up as an organzation by sending a POST request to "/user_admin_api/organizations" with a valid organization name and email
+    And I send a GET request to "/user_admin_api/organizations/1"
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    And the JSON response body should have the following elements:
+      | name           | 
+      | street_address |
+      | city           |
+      | state          |
+      | zip            |
+      | email          |
+    And the JSON response body should have the following rel and href values:
+      | rel    | href                              |
+      | self   | /user_admin_api/organizations/1   |
+   

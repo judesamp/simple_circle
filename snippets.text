@@ -11,3 +11,39 @@
               <li>{{#link-to 'preview'}}Preview{{/link-to}}</li> 
 
 
+
+
+
+
+Given(/^I send a GET request to "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the JSON response body should have the following elements:$/) do |table|
+  # table is a Cucumber::Ast::Table
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the JSON response body should have the following rel and href values:$/) do |table|
+  # table is a Cucumber::Ast::Table
+  pending # express the regexp above with the code you wish you had
+end
+
+
+Then (/^the JSON response body should have the following rel and href values:$/) do |table|
+  table.map_headers! {|header| header.to_sym }
+  link_collection = JSON.parse(last_response.body)["links"]
+  table.hashes.each do |row|
+    selected = link_collection.find { |l| l['rel'] == row[:rel] }
+    expect(selected['href']).to eq row[:href]
+  end
+end
+
+Then (/^the JSON response should contain the following links:$/) do |elements|
+  elements.raw.flatten.map {|element| expect(JSON.parse(last_response.body)["links"][element]).to eq value }
+end
+
+Then (/^the JSON response should be an array with (\d+) "([^\"]*)" elements$/) do |number_of_children, name|
+  parsed_response = JSON.parse(last_response.body)
+  expect(parsed_response.map { |d| d[name] }.length).to eq number_of_children.to_i
+end
