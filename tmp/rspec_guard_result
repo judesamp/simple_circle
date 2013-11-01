@@ -1,1 +1,16 @@
-
+./spec/app/entities/article_spec.rb:20
+./spec/app/entities/article_spec.rb:25
+./spec/app/entities/article_spec.rb:33
+./spec/app/entities/article_spec.rb:38
+./spec/app/entities/article_spec.rb:43
+./spec/app/entities/article_spec.rb:48
+./spec/app/entities/article_spec.rb:53
+./spec/app/entities/issue_spec.rb:20
+./spec/app/entities/issue_spec.rb:24
+./spec/app/entities/issue_spec.rb:28
+./spec/app/entities/issue_spec.rb:32
+./spec/app/entities/issue_spec.rb:38
+./spec/app/entities/issue_spec.rb:43
+./spec/app/entities/issue_spec.rb:50
+./spec/app/entities/issue_spec.rb:57
+./spec/app/entities/newsletter_spec.rb:43

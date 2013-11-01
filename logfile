@@ -194,3 +194,233 @@ LOG:  autovacuum launcher shutting down
 LOG:  received smart shutdown request
 LOG:  shutting down
 LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-28 20:33:50 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, article_title, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO "articles" ("id", "title") VALUES (1, 'article_title')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, article_title, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO "articles" ("id", "title") VALUES (1, 'article_title')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, article_title, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO "articles" ("id", "title") VALUES (1, 'article_title')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, article_title, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO "articles" ("id", "title") VALUES (1, 'article_title')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, article_title, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO "articles" ("id", "title") VALUES (1, 'article_title')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, mytitle, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO "articles" ("id", "title") VALUES (1, 'mytitle')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, mytitle, null, null, null, null, null, null, null, 1, null).
+STATEMENT:  INSERT INTO "articles" ("id", "issue_id", "title") VALUES (1, 1, 'mytitle')
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (1, mytitle, null, null, null, null, null, null, null, 1, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (2, mytitle, null, null, null, null, null, null, null, 1, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (3, myarticletitle, null, null, null, null, null, null, null, 4, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (4, 'myarticletitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (4, myarticletitle, null, null, null, null, null, null, null, 4, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (4, 'myarticletitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (5, mygoodtitle, null, null, null, null, null, null, null, 4, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (4, 'mygoodtitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (6, mygoodtitle, null, null, null, null, null, null, null, 4, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (4, 'mygoodtitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (7, my title, null, null, null, null, null, null, null, 4, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (4, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (8, my title, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (9, my title, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (10, my title, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (11, my title, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (12, my title, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (13, my title, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'my title') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (14, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (15, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (16, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (17, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (18, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (19, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (20, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (21, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (22, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (23, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (24, mytitle, null, null, null, null, null, null, null, 5, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (5, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (25, mytitle, null, null, null, null, null, null, null, 10, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (10, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (26, mytitle, null, null, null, null, null, null, null, 10, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (10, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (27, mytitle, null, null, null, null, null, null, null, 10, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (10, 'mytitle') RETURNING "id"
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (28, mytitle, null, null, null, null, null, null, null, 10, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (10, 'mytitle') RETURNING "id"
+FATAL:  role "postgres" does not exist
+ERROR:  null value in column "newsletter_id" violates not-null constraint
+DETAIL:  Failing row contains (29, mytitle, null, null, null, null, null, null, null, 10, null).
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (10, 'mytitle') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(10) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (10, 'mytitle') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('mytitle', 1, '2013-10-29T21:11:30-04:00', '2013-10-29', '2013-10-29T21:11:30-04:00', '2013-10-29') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('mytitle', 1, '2013-10-29T21:14:30-04:00', '2013-10-29', '2013-10-29T21:14:30-04:00', '2013-10-29') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('mytitle', 1, '2013-10-29T21:15:07-04:00', '2013-10-29', '2013-10-29T21:15:07-04:00', '2013-10-29') RETURNING "id"
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-29 22:04:12 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-30 21:55:20 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id", "newsletter_id", "draft_name") VALUES (1, 1, 'another_draft_name')
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id", "draft_name") VALUES (1, 'another_draft_name')
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-31 22:16:17 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  role "postgres" does not exist
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 2752) running in data directory "/usr/local/var/postgres"?
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-10-31 22:23:05 EDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id", "newsletter_id") VALUES (1, 1)
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id") VALUES (1)
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id") VALUES (1)
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id") VALUES (1)
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id") VALUES (1)
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  INSERT INTO "issues" ("id", "newsletter_id", "draft_name") VALUES (1, 1, 'notnull')
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 4
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 5
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 8
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 9
+ERROR:  duplicate key value violates unique constraint "issues_pkey"
+DETAIL:  Key (id)=(1) already exists.
+STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 10

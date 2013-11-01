@@ -8,7 +8,11 @@ module Implementation
       include Roar::Representer::Feature::Hypermedia
 
       property :newsletter_id
+      property :id
       property :issue_number, :render_nil => true
+      property :articles, :render_nil => true
+      property :draft_name, :render_nil => true
+
       # property :name
       # property :email, :render_nil => true
       # property :street_address, :render_nil => true

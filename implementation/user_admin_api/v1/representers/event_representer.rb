@@ -7,12 +7,16 @@ module Implementation
       include Roar::Representer::JSON
       include Roar::Representer::Feature::Hypermedia
 
-      # property :name
-      # property :email, :render_nil => true
-      # property :street_address, :render_nil => true
-      # property :city, :render_nil => true
-      # property :state, :render_nil => true
-      # property :zip, :render_nil => true
+      property :issue_id
+      property :event_name,       :render_nil => true
+      property :description,      :render_nil => true
+      property :contact,          :render_nil => true
+      property :contact_email,    :render_nil => true
+      property :contact_phone,    :render_nil => true
+      property :event_start_date, :render_nil => true
+      property :event_end_date,   :render_nil => true
+      property :expire_on,        :render_nil => true
+
       
       link :self do
         self.resource_uri

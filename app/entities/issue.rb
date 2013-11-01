@@ -7,15 +7,16 @@ class Issue
   property :id,						           Serial
   property :newsletter_id,           Integer
   property :issue_number,            String
-  property :publish_on,              DateTime
+  property :publish_date,            DateTime
   property :published_on,            DateTime
+  property :draft_name,              String
   # property :created_at,             DateTime
   # property :created_on,             Date
   # property :updated_at,             DateTime
   # property :updated_on,             Date
 
-  has n, :articles
-  has n, :events
+  has n, :articles, :constraint => :destroy
+  has n, :events, :constraint => :destroy
   belongs_to :newsletter
 
   def self.process(attributes)

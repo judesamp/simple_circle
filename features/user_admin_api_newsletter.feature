@@ -35,7 +35,8 @@ Feature: Creating a Newsletter
       | self   | /newsletters/1 |
 
      
-
+  Scenario: Updating or editing a specific newsletter
+    
 
     
    

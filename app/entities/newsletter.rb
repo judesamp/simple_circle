@@ -14,7 +14,7 @@ class Newsletter
   property :updated_on,             Date
 
   belongs_to :organization
-  has n, :issues
+  has n, :issues, :constraint => :destroy
 
   def self.process(newsletter_name)
     begin

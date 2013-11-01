@@ -11,7 +11,7 @@ class Organization
   property :email,               String
   property :zip,                 String
   
-  has n, :newsletters
+  has n, :newsletters, :constraint => :destroy
 
   def self.process(attributes)
     begin
