@@ -424,3 +424,1291 @@ STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 
 ERROR:  duplicate key value violates unique constraint "issues_pkey"
 DETAIL:  Key (id)=(1) already exists.
 STATEMENT:  UPDATE "issues" SET "id" = 1, "draft_name" = 'notnull' WHERE "id" = 10
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-03 16:15:08 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-05 17:22:08 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-05 21:04:11 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-06 22:12:59 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-09 19:29:37 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:49-05:00', '2013-11-17', '2013-11-17T10:10:49-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:49-05:00', '2013-11-17', '2013-11-17T10:10:49-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:49-05:00', '2013-11-17', '2013-11-17T10:10:49-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:50-05:00', '2013-11-17', '2013-11-17T10:10:50-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:50-05:00', '2013-11-17', '2013-11-17T10:10:50-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:50-05:00', '2013-11-17', '2013-11-17T10:10:50-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:51-05:00', '2013-11-17', '2013-11-17T10:10:51-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:51-05:00', '2013-11-17', '2013-11-17T10:10:51-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:51-05:00', '2013-11-17', '2013-11-17T10:10:51-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:52-05:00', '2013-11-17', '2013-11-17T10:10:52-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:52-05:00', '2013-11-17', '2013-11-17T10:10:52-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:52-05:00', '2013-11-17', '2013-11-17T10:10:52-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:53-05:00', '2013-11-17', '2013-11-17T10:10:53-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:53-05:00', '2013-11-17', '2013-11-17T10:10:53-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:53-05:00', '2013-11-17', '2013-11-17T10:10:53-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:53-05:00', '2013-11-17', '2013-11-17T10:10:53-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:54-05:00', '2013-11-17', '2013-11-17T10:10:54-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:54-05:00', '2013-11-17', '2013-11-17T10:10:54-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:54-05:00', '2013-11-17', '2013-11-17T10:10:54-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:54-05:00', '2013-11-17', '2013-11-17T10:10:54-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:54-05:00', '2013-11-17', '2013-11-17T10:10:54-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:55-05:00', '2013-11-17', '2013-11-17T10:10:55-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:55-05:00', '2013-11-17', '2013-11-17T10:10:55-05:00', '2013-11-17') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-17T10:10:56-05:00', '2013-11-17', '2013-11-17T10:10:56-05:00', '2013-11-17') RETURNING "id"
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-17 20:07:43 EST
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:06-05:00', '2013-11-18', '2013-11-18T16:13:06-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:07-05:00', '2013-11-18', '2013-11-18T16:13:07-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:07-05:00', '2013-11-18', '2013-11-18T16:13:07-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:08-05:00', '2013-11-18', '2013-11-18T16:13:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:08-05:00', '2013-11-18', '2013-11-18T16:13:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:08-05:00', '2013-11-18', '2013-11-18T16:13:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:09-05:00', '2013-11-18', '2013-11-18T16:13:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:09-05:00', '2013-11-18', '2013-11-18T16:13:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:09-05:00', '2013-11-18', '2013-11-18T16:13:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:10-05:00', '2013-11-18', '2013-11-18T16:13:10-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:10-05:00', '2013-11-18', '2013-11-18T16:13:10-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:10-05:00', '2013-11-18', '2013-11-18T16:13:10-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:11-05:00', '2013-11-18', '2013-11-18T16:13:11-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:11-05:00', '2013-11-18', '2013-11-18T16:13:11-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:11-05:00', '2013-11-18', '2013-11-18T16:13:11-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:11-05:00', '2013-11-18', '2013-11-18T16:13:11-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:12-05:00', '2013-11-18', '2013-11-18T16:13:12-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:12-05:00', '2013-11-18', '2013-11-18T16:13:12-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:12-05:00', '2013-11-18', '2013-11-18T16:13:12-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:12-05:00', '2013-11-18', '2013-11-18T16:13:12-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:12-05:00', '2013-11-18', '2013-11-18T16:13:12-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:13-05:00', '2013-11-18', '2013-11-18T16:13:13-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:13-05:00', '2013-11-18', '2013-11-18T16:13:13-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T16:13:13-05:00', '2013-11-18', '2013-11-18T16:13:13-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:03-05:00', '2013-11-18', '2013-11-18T17:04:03-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:04-05:00', '2013-11-18', '2013-11-18T17:04:04-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:04-05:00', '2013-11-18', '2013-11-18T17:04:04-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:05-05:00', '2013-11-18', '2013-11-18T17:04:05-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:05-05:00', '2013-11-18', '2013-11-18T17:04:05-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:05-05:00', '2013-11-18', '2013-11-18T17:04:05-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:06-05:00', '2013-11-18', '2013-11-18T17:04:06-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:06-05:00', '2013-11-18', '2013-11-18T17:04:06-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:06-05:00', '2013-11-18', '2013-11-18T17:04:06-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:07-05:00', '2013-11-18', '2013-11-18T17:04:07-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:07-05:00', '2013-11-18', '2013-11-18T17:04:07-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:07-05:00', '2013-11-18', '2013-11-18T17:04:07-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:08-05:00', '2013-11-18', '2013-11-18T17:04:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:08-05:00', '2013-11-18', '2013-11-18T17:04:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:08-05:00', '2013-11-18', '2013-11-18T17:04:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:08-05:00', '2013-11-18', '2013-11-18T17:04:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:08-05:00', '2013-11-18', '2013-11-18T17:04:08-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:09-05:00', '2013-11-18', '2013-11-18T17:04:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:09-05:00', '2013-11-18', '2013-11-18T17:04:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:09-05:00', '2013-11-18', '2013-11-18T17:04:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:09-05:00', '2013-11-18', '2013-11-18T17:04:09-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:10-05:00', '2013-11-18', '2013-11-18T17:04:10-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:10-05:00', '2013-11-18', '2013-11-18T17:04:10-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:04:10-05:00', '2013-11-18', '2013-11-18T17:04:10-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:13-05:00', '2013-11-18', '2013-11-18T17:17:13-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:13-05:00', '2013-11-18', '2013-11-18T17:17:13-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:13-05:00', '2013-11-18', '2013-11-18T17:17:13-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:14-05:00', '2013-11-18', '2013-11-18T17:17:14-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:14-05:00', '2013-11-18', '2013-11-18T17:17:14-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:15-05:00', '2013-11-18', '2013-11-18T17:17:15-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:15-05:00', '2013-11-18', '2013-11-18T17:17:15-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:16-05:00', '2013-11-18', '2013-11-18T17:17:16-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:16-05:00', '2013-11-18', '2013-11-18T17:17:16-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:17-05:00', '2013-11-18', '2013-11-18T17:17:17-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:17-05:00', '2013-11-18', '2013-11-18T17:17:17-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:17-05:00', '2013-11-18', '2013-11-18T17:17:17-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:18-05:00', '2013-11-18', '2013-11-18T17:17:18-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:18-05:00', '2013-11-18', '2013-11-18T17:17:18-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:19-05:00', '2013-11-18', '2013-11-18T17:17:19-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:19-05:00', '2013-11-18', '2013-11-18T17:17:19-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:19-05:00', '2013-11-18', '2013-11-18T17:17:19-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:17:19-05:00', '2013-11-18', '2013-11-18T17:17:19-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'second_article_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "articles" violates foreign key constraint "articles_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title") VALUES (1, 'my_title') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'second_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "events" violates foreign key constraint "events_issue_fk"
+DETAIL:  Key (issue_id)=(1) is not present in table "issues".
+STATEMENT:  INSERT INTO "events" ("issue_id", "event_name") VALUES (1, 'my_event_name') RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:18:05-05:00', '2013-11-18', '2013-11-18T17:18:05-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:18:06-05:00', '2013-11-18', '2013-11-18T17:18:06-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:18:06-05:00', '2013-11-18', '2013-11-18T17:18:06-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:19:17-05:00', '2013-11-18', '2013-11-18T17:19:17-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:19:18-05:00', '2013-11-18', '2013-11-18T17:19:18-05:00', '2013-11-18') RETURNING "id"
+ERROR:  insert or update on table "newsletters" violates foreign key constraint "newsletters_organization_fk"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+STATEMENT:  INSERT INTO "newsletters" ("title", "subtitle", "organization_id", "created_at", "created_on", "updated_at", "updated_on") VALUES ('newsletter_title', 'newsletter_subtitle', 1, '2013-11-18T17:19:18-05:00', '2013-11-18', '2013-11-18T17:19:18-05:00', '2013-11-18') RETURNING "id"
+LOG:  database system was interrupted; last known up at 2013-11-18 20:49:35 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/FBB76BF0
+LOG:  redo is not required
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-21 22:33:42 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-22 22:32:16 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-24 20:56:56 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-11-26 21:41:53 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (1, null, 23, null, 6).
+STATEMENT:  INSERT INTO "posts" ("event_id", "issue_id") VALUES (6, 23) RETURNING "id"
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (2, null, 23, null, 7).
+STATEMENT:  INSERT INTO "posts" ("event_id", "issue_id") VALUES (7, 23) RETURNING "id"
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (3, null, 23, null, 8).
+STATEMENT:  INSERT INTO "posts" ("event_id", "issue_id") VALUES (8, 23) RETURNING "id"
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (4, null, 23, null, 9).
+STATEMENT:  INSERT INTO "posts" ("event_id", "issue_id") VALUES (9, 23) RETURNING "id"
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (5, null, 23, null, 10).
+STATEMENT:  INSERT INTO "posts" ("event_id", "issue_id") VALUES (10, 23) RETURNING "id"
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-12-02 16:31:10 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (6, null, 23, null, 11).
+STATEMENT:  INSERT INTO "posts" ("event_id", "issue_id") VALUES (11, 23) RETURNING "id"
+ERROR:  null value in column "article_id" violates not-null constraint
+DETAIL:  Failing row contains (7, null, 23, null, 12).
+STATEMENT:  INSERT INTO "posts" ("issue_id", "event_id") VALUES (23, 12) RETURNING "id"
+FATAL:  role "postgres" does not exist
+ERROR:  syntax error at or near "PRAGMA" at character 1
+STATEMENT:  PRAGMA temp_store = MEMORY
+ERROR:  column "article_id" contains null values
+STATEMENT:  ALTER TABLE "posts" ADD COLUMN "article_id" INTEGER NOT NULL
+ERROR:  null value in column "event_id" violates not-null constraint
+DETAIL:  Failing row contains (4, null, 2, null, 3).
+STATEMENT:  INSERT INTO "posts" ("issue_id", "article_id") VALUES (2, 3) RETURNING "id"
+ERROR:  null value in column "event_id" violates not-null constraint
+DETAIL:  Failing row contains (5, null, 2, null, 4).
+STATEMENT:  INSERT INTO "posts" ("issue_id", "article_id") VALUES (2, 4) RETURNING "id"
+ERROR:  syntax error at or near "PRAGMA" at character 1
+STATEMENT:  PRAGMA temp_store = MEMORY
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+ERROR:  cannot drop table articles because other objects depend on it
+DETAIL:  constraint article_issues_article_fk on table article_issues depends on table articles
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE IF EXISTS "articles"
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 5200) running in data directory "/usr/local/var/postgres"?
+FATAL:  the database system is shutting down
+FATAL:  the database system is shutting down
+LOG:  database system was interrupted; last known up at 2013-12-02 23:51:15 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  redo starts at 0/FC1EEAB0
+LOG:  record with zero length at 0/FC1EEAF0
+LOG:  redo done at 0/FC1EEAB0
+LOG:  last completed transaction was at log time 2013-12-02 23:51:15.797613-05
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
+DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
+STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"

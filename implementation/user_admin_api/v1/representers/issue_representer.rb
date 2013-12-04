@@ -9,9 +9,11 @@ module Implementation
 
       property :newsletter_id
       property :id
+      property :draft_name, :render_nil => true
       property :issue_number, :render_nil => true
       property :articles, :render_nil => true
-      property :draft_name, :render_nil => true
+      property :events, :render_nil => true
+      
 
       # property :name
       # property :email, :render_nil => true

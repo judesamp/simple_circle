@@ -7,9 +7,11 @@ module Implementation
       include Roar::Representer::JSON
       include Roar::Representer::Feature::Hypermedia
 
+      property :id
       property :title
       property :subtitle, :render_nil => true
       property :organization_id, :render_nil => true
+      property :issues, :render_nil => true
      
       
       link :self do

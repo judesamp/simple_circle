@@ -41,8 +41,19 @@ Feature: Creating an issue
      
     Scenario: Updating or editing a specific issue of a newsletter
       Given I have already signed up my organization and created a newsletter
-      Given I send a POST request to "/user_admin_api/newsletters/1/issues?draft_name=my_draft"
-      When I send a PUT request to "/user_admin_api/issues/1?draft_name=new_draft_name" in order to update my issue
+      Given I send a POST request to "/user_admin_api/newsletters/1/issues" with the body
+      """
+        {
+          "draft_name": "my_draft"
+        }
+      """
+
+      When I send a PUT request to "/user_admin_api/issues/1" with the body
+      """
+        {
+          "draft_name": "new_draft_name"
+        }
+      """
       Then the JSON response headers should set appropriately
       Then the response code should be "200"
       Then the the JSON response body should not have the key/value pair, "draft_name" and "my_draft"

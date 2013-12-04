@@ -14,19 +14,11 @@ class Event
   	property :event_start_date,     Date
   	property :event_end_date,       Date
   	property :expire_on,            Date
-  #  
-    belongs_to :issue
+  # 
+    has n, :posts, :constraint => :destroy  
+    has n, :issues, :model => 'Issue', :child_key => [:id], :parent_key => [:issue_id], :through => :posts
 
-
-  def self.process(attributes)
-    begin
-      article = create(attributes)
-    rescue DataMapper::SaveFailureError => e
-      return e.message
-    end
-  end
-
-	def edit_draft(attr)
+	def edit(attr)
     self.attributes = attr
     self.save
   end

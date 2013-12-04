@@ -1,8 +1,6 @@
 module Implementation
-  module Super_AdminAPI
+  module SuperAdminAPI
     class V1 < Sinatra::Base
-
-
 
             ###### organizations ########
 

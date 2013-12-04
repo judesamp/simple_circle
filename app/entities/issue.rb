@@ -15,18 +15,10 @@ class Issue
   # property :updated_at,             DateTime
   # property :updated_on,             Date
 
-  has n, :articles, :constraint => :destroy
-  has n, :events, :constraint => :destroy
+  has n, :posts
+  has n, :articles, :through => :posts
+  has n, :events, :through => :posts
   belongs_to :newsletter
-
-  def self.process(attributes)
-    begin
-      issue = create(attributes)
-
-    rescue DataMapper::SaveFailureError => e
-      return e.message
-    end
-  end
 
   def resource_uri
     "/issues/#{self.id}"

@@ -3,22 +3,18 @@ html, body {
    height: 100%;
 }
 
-div.navbar {
-	margin-bottom: 0;
-	padding-bottom: 0;
-}
-
 .side_nav {
 	margin: 0;
-	padding: 0;
-	position:fixed;
-	min-width: 19%;
+	padding: 10px 0 0 0;
+	position: fixed;
 	height: 100%;
+	width: 300px;
+	background-color: #f8f8f8;
+	border-right: 1px solid #e7e7e7;
 }
 
-.wrapper {
-	position:relative;
-	margin-top: 10px;
+.navbar {
+	margin-bottom: 0;
 }
 
 .sidebar_list {
@@ -27,21 +23,19 @@ div.navbar {
 
 .workspace {
 	padding: 20px;
-	margin-left: 20%;
-	margin-right:10px;
+	margin-left: 300px;
+	padding: 0 0;
 	text-align: center;
 }
 
 .content_box {
-	text-align: justify;
-	width: 88%;
-	margin: auto;
 	font-size: 150%;
 	line-height: 150%;
+	text-align: left;
 }
 
 .content_box form {
-	text-align: center;
+	text-align: left;
 }
 
 .active {
@@ -50,6 +44,7 @@ div.navbar {
 
 .nav_rule {
 	border-width: 3px 0;
+	width: 90%;
 }
 
 .centered {
@@ -69,56 +64,54 @@ div.navbar {
 	background-color: lightgray;
 }
 
+.list_with_no_style {
+	list-style-type: none;
+}
+
+.modal-dialog {
+	width: 800px !important;
+}
+
+.article_form {
+	width: 90%;
+	text-align: left;
+	margin: auto;
+}
+
+#my_new_issue_button {
+	padding: 0px;
+}
+input.my_input_size { 
+	width: 125px; 
+}
 /* Large desktop */
-@media (min-width: 1200px) { ... }
+@media (max-width: 1100px) {
+	
+
+	.side_nav {
+	margin: 0;
+	padding: 10px 0 0 0;
+	float:right;
+	height: 100%;
+	width: 300px;
+	background-color: #f8f8f8;
+	border-right: 1px solid #e7e7e7;
+}
+
+.workspace {
+		margin-left:310px;
+		width: 900px;
+		float: left;
+		overflow: auto;
+	}
+	
+}
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) { ... }
  
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-
-	.side_nav {
-		width: 100%;
-		margin: 0;
-		padding: 0;
-		position:relative;
-	}
-
-	.workspace {
-		padding: 0;
-		margin-left:0;
-		margin-right: 0;
-		text-align: center;
-	}
-
-	.sidebar_list li {
-		margin: 0;
-		display:inline;
-		padding: 5px;
-	}
-
-	.borderline {
-		border-right: 1px solid black;
-	}
-
-	.wrapper {
-		text-align: center;
-	}
-
-	.workspace_list {
-		margin: 0;
-		padding: 0;
-	}
-	.sidebar_list {
-		padding: 0;
-		margin: 0;
-	}
-	.content_box {
-		text-align: left;
-	}
-
-}
+@media (max-width: 767px) { ... }
  
 /* Landscape phones and down */
 @media (max-width: 480px) { ... }

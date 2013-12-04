@@ -3,7 +3,7 @@ module Implementation
     set :public_folder, "implementation/user_admin/public"
     set :views, "implementation/user_admin/views"
     
-    get '/' do
+    get '/:organization_id' do
       erb :index
     end
   end

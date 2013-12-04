@@ -7,6 +7,7 @@ module Implementation
       include Roar::Representer::JSON
       include Roar::Representer::Feature::Hypermedia
 
+      property :id
       property :issue_id
       property :event_name,       :render_nil => true
       property :description,      :render_nil => true

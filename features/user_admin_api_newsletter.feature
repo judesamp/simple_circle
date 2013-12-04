@@ -11,7 +11,13 @@ Feature: Creating a Newsletter
     And I haven't created a newsletter
   
   Scenario: Creating a newsletter
-    Given I send a POST request to "/user_admin_api/organizations/1/newsletters?title=newsletter_title&subtitle=newsletter_subtitle" with a valid title and subtitle
+    Given I send a POST request to "/user_admin_api/organizations/1/newsletters" with the body
+    """
+        {
+          "title" : "newsletter_title",
+          "subtitle" : "newsletter_subtitle"
+        }
+    """
     Then the JSON response headers should set appropriately
     Then the response code should be "200"
     Then the JSON response body should have the following elements:
@@ -23,8 +29,14 @@ Feature: Creating a Newsletter
       | newsletter_subtitle |
 
   Scenario: Retrieving a specific newsletter
-    Given I send a POST request to "/user_admin_api/organizations/1/newsletters?title=newsletter_title&subtitle=newsletter_subtitle" with a valid title and subtitle
-    And I send a GET request to "/user_admin_api/organizations/1/newsletters"
+    Given I send a POST request to "/user_admin_api/organizations/1/newsletters" with the body
+    """
+        {
+          "title" : "newsletter_title",
+          "subtitle" : "newsletter_subtitle"
+        }
+    """
+    And I send a GET request to "/user_admin_api/newsletters/1"
     Then the JSON response headers should set appropriately
     Then the response code should be "200"
     And the JSON response body should have the following elements:
@@ -34,9 +46,25 @@ Feature: Creating a Newsletter
       | rel    | href           |
       | self   | /newsletters/1 |
 
-     
   Scenario: Updating or editing a specific newsletter
-    
+    Given I send a POST request to "/user_admin_api/organizations/1/newsletters" with the body
+    """
+        {
+          "title" : "newsletter_title",
+          "subtitle" : "newsletter_subtitle"
+        }
+    """
+    When I send a PUT request to "/user_admin_api/newsletters/1" to update my issue with the body
+    """
+        {
+          "title" : "new_newsletter_title"
+        }
+    """
+    Then the JSON response headers should set appropriately
+    Then the response code should be "200"
+    Then the the JSON response body should not have the key/value pair, "title" and "newsletter_title"
+    Then the the JSON response body should have the key/value pair, "title" and "new_newsletter_title"
+
 
     
    

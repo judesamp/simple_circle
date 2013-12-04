@@ -1,7 +1,11 @@
 @issues
 Given(/^I have already signed up my organization and created a newsletter$/) do
-  post "/user_admin_api/organizations?name=myorgname&email=jerome@example.org"
-  post "/user_admin_api/organizations/1/newsletters?title=newsletter_title&subtitle=newsletter_subtitle"
+  path1 = "/user_admin_api/organizations"
+  path2 = "/user_admin_api/organizations/1/newsletters" 
+  body1 = {:name => "myorgname", :email => "jerome@example.org"}.to_json
+  body2 = {:title => "newsletter_title", :subtitle => "newsletter_subtitle"}.to_json
+  post path1, body1
+  post path2, body2
 end
 
 Given(/^I send a POST request to "(.*?)"$/) do |path|

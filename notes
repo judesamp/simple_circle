@@ -1,3 +1,667 @@
+</script>
+
+
+<script type="text/x-handlebars" id="_organization_info">
+    <li>{{#link-to 'organization'}} {{name}} {{/link-to}}</li>
+    <li>{{#link-to 'newsletter' this.newsletter}} Newsletter {{/link-to}}</li>
+</script>
+
+<script type="text/x-handlebars" id="organizations">
+  organizations
+</script>
+
+<script type="text/x-handlebars" id="newsletter">
+  newsletter
+</script>
+
+<script type="text/x-handlebars" id="issues">
+    <li class="borderline">{{#link-to 'organization'}}Create Draft{{/link-to}}</li>
+    {{#each issues}}
+      <li>{{#link-to 'issue' this}} {{id}} {{draft_name}} {{/link-to}}</li>
+    {{/each}}    
+</script>
+
+<script type="text/x-handlebars" id="issue">
+  <div class="centered">
+    <p><small>You are working on a draft named: <strong>{{draft_name}}.</strong></small></p>
+    
+    {{#if isEditing}}
+    
+      {{partial 'issue/edit'}}
+    <button {{action 'doneEditing'}}>Done</button>
+    {{else}}
+        {{#link-to "articles"}}<button>Summary</button>{{/link-to}}
+        {{#link-to "issue.add_article"}}<button>Add Article</button>{{/link-to}}
+        {{#link-to "issue.add_event"}}<button>Add Event</button>{{/link-to}}
+        {{#link-to "articles.preview"}}<button>Preview Draft</button>{{/link-to}}
+
+      
+       <button {{action 'edit'}}>Edit Draft Name</button>
+    {{/if}}
+    <br />
+
+
+    </div>
+    <hr class="nav_rule">
+    
+    
+    
+    {{outlet}}
+  
+  
+
+
+</script>
+
+<script type="text/x-handlebars" id="issue/add_article">
+  <h2 class="centered">Adding an Article</h2>
+  <div class="issue_form">
+    <form id="article_form" action="#" method="post">
+      <table class="issue_table">
+
+        <tr>
+          <td>
+            <label for="article_title">Article Title:</label>
+          </td>
+          <td>
+            <input type="text" name="article_title">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="author">Author:</label>
+          </td>
+          <td>
+            <input type="text" name="author">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="article_text">Text:</label>
+          </td>
+          <td>
+            <input type="text" name="article_text">
+          </td>
+        </tr>
+
+        <tr class="centered">
+          <td colspan="2">
+            <input type="submit" name="submit" value="Submit Form">
+          </td>
+        </tr>
+
+      </table>
+    </form>
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="issue/add_event">
+  <h2 class="centered">Adding an event</h2>
+
+  <div class="issue_form">
+    <form id="event_form" action="#" method="post">
+      <table class="issue_table">
+
+        <tr>
+          <td>
+            <label for="event_name">Event Name:</label>
+          </td>
+
+          <td>
+            <input type="text" name="event_name">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="description">Description:</label>
+          </td>
+          <td>
+            <input type="text" name="description">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="location">Location:</label>
+          </td>
+          <td>
+            <input type="text" name="location">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="contact">Contact:</label>
+          </td>
+          <td>
+            <input type="text" name="contact">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="recurring">Recurring:</label>
+          </td>
+          <td>
+            <input type="text" name="recurring">
+          </td>
+        </tr>
+
+
+
+        <tr class="centered">
+          <td colspan="2">
+            <input type="submit" name="submit" value="Submit Form">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+ 
+ 
+</script>
+
+<script type="text/x-handlebars" id="issues/select">
+  <h1>Drafts</h1>
+  <p>You can begin editing a draft by clicking on its name in the left sidebar. If you want to start fresh, click the "Create Draft" link.</p>
+</script>
+
+<script type="text/x-handlebars" id="issue/preview">
+  <h1 class="centered">Previewing the issue</h1>
+</script>
+
+<script type="text/x-handlebars" id="issue/summary">
+  <h1 class="centered">Issue summary</h1>
+</script>
+
+<script type="text/x-handlebars" id="secondary_greeting">
+  <h1>Secondary greeting</h1>
+</script>
+
+
+
+
+
+
+
+  <script type="text/x-handlebars" id="issue/_edit">
+    <p>{{input type="text" value=draft_name}}</p>
+  </script>
+    
+</script>
+
+<script type="text/x-handlebars" id="articles">
+  articles
+</script>
+
+<script type="text/x-handlebars" id="events">
+  article
+</script>
+
+
+
+
+<script type="text/x-handlebars" id="account">
+  account baby, account, here we go
+</script>
+
+<script type="text/x-handlebars" id="about">
+  about
+</script>
+
+
+
+
+
+
+
+
+
+
+
+App.OrganizationRoute = Ember.Route.extend({
+  model: function() {
+    // organization = this.store.find('organization', 6);
+    // alert(organization.id);
+
+    var org_num = location.pathname.match(/\/user_admin\/(.*)/)[1];
+    return $.getJSON('http://localhost:3000/user_admin_api/organizations/'+org_num+'/with_newsletter');
+  }
+});
+
+
+App.IssuesRoute = Ember.Route.extend({
+ model: function (params) {
+    var store = this.get('store');
+    var organization = store.find('organization');
+    alert(organization.name);
+    
+    return $.getJSON('http://localhost:3000/user_admin_api/newsletters/3');
+  },
+
+  renderTemplate: function() {
+    this.render('issues', {outlet: "nav"});
+  }
+});
+
+App.ArticlesRoute = Ember.Route.extend({
+  model: function(params) {
+    return $.getJSON('http://localhost:3000/user_admin_api/issues/15');
+  }
+});
+
+App.IssueRoute = Ember.Route.extend({
+  model: function(params) {
+    return issue.findBy('id', params.issue_id);
+  }
+});
+
+
+App.IssuesIndexRoute = Ember.Route.extend({
+ beforeModel: function() {
+    this.transitionTo('issues');
+  }
+});
+
+
+
+
+
+App.Organization = DS.Model.extend({
+  name: DS.attr('string'),
+  email: DS.attr('string')
+});
+
+
+
+
+
+
+
+// App.NewsletterRoute = Ember.Route.extend({
+//   model: function (params) {
+//     App.Newsletter.find(params.newsletter_id);
+//     //return $.getJSON('http://localhost:3000/articles.json');
+//   }
+// });
+
+// App.IssueRoute = Ember.Route.extend({
+//   model: function (params) {
+//    App.Issues.find(params.issue_id);
+//     // App.Issues.find(params.newsletter_id);
+//     // //return $.getJSON('http://localhost:3000/articles.json');
+//   }
+// });
+
+// 
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-handlebars" id="issue/add_article">
+  <h2 class="centered">Adding an Article</h2>
+  <div class="issue_form">
+    <form id="article_form" action="#" method="post">
+      <table class="issue_table">
+
+        <tr>
+          <td>
+            <label for="article_title">Article Title:</label>
+          </td>
+          <td>
+            <input type="text" name="article_title">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="author">Author:</label>
+          </td>
+          <td>
+            <input type="text" name="author">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="article_text">Text:</label>
+          </td>
+          <td>
+            <input type="text" name="article_text">
+          </td>
+        </tr>
+
+        <tr class="centered">
+          <td colspan="2">
+            <input type="submit" name="submit" value="Submit Form">
+          </td>
+        </tr>
+
+      </table>
+    </form>
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="issue/add_event">
+  <h2 class="centered">Adding an event</h2>
+
+  <div class="issue_form">
+    <form id="event_form" action="#" method="post">
+      <table class="issue_table">
+
+        <tr>
+          <td>
+            <label for="event_name">Event Name:</label>
+          </td>
+
+          <td>
+            <input type="text" name="event_name">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="description">Description:</label>
+          </td>
+          <td>
+            <input type="text" name="description">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="location">Location:</label>
+          </td>
+          <td>
+            <input type="text" name="location">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="contact">Contact:</label>
+          </td>
+          <td>
+            <input type="text" name="contact">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="recurring">Recurring:</label>
+          </td>
+          <td>
+            <input type="text" name="recurring">
+          </td>
+        </tr>
+
+
+
+        <tr class="centered">
+          <td colspan="2">
+            <input type="submit" name="submit" value="Submit Form">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+ 
+ 
+</script>
+
+<script type="text/x-handlebars" id="issues/select">
+  <h1>Drafts</h1>
+  <p>You can begin editing a draft by clicking on its name in the left sidebar. If you want to start fresh, click the "Create Draft" link.</p>
+</script>
+
+<script type="text/x-handlebars" id="issue/preview">
+  <h1 class="centered">Previewing the issue</h1>
+</script>
+
+<script type="text/x-handlebars" id="issue/summary">
+  <h1 class="centered">Issue summary</h1>
+</script>
+
+<script type="text/x-handlebars" id="secondary_greeting">
+  <h1>Secondary greeting</h1>
+</script>
+
+
+
+<script type="text/x-handlebars" id="issues">
+    <li class="borderline">{{#link-to 'about'}}Create Draft{{/link-to}}</li>
+    {{#each}}
+      <li>{{#link-to 'issue.summary' this}} {{draft_name}} {{/link-to}}</li>
+    {{/each}}    
+</script>
+
+<script type="text/x-handlebars" id="issue">
+  <div class="centered">
+    <p><small>You are working on a draft named: <strong>{{name}}.</strong></small></p>
+    
+    {{#if isEditing}}
+    
+      {{partial 'issue/edit'}}
+    <button {{action 'doneEditing'}}>Done</button>
+    {{else}}
+        {{#link-to "issue.summary"}}<button>Summary</button>{{/link-to}}
+        {{#link-to "issue.add_article"}}<button>Add Article</button>{{/link-to}}
+        {{#link-to "issue.add_event"}}<button>Add Event</button>{{/link-to}}
+        {{#link-to "issue.preview"}}<button>Preview Draft</button>{{/link-to}}
+
+      
+       <button {{action 'edit'}}>Edit Draft Name</button>
+    {{/if}}
+    <br />
+
+
+    </div>
+    <hr class="nav_rule">
+    
+    
+    
+    {{outlet}}
+  
+  
+
+
+</script>
+
+  <script type="text/x-handlebars" id="issue/_edit">
+    <p>{{input type="text" value=draft_name}}</p>
+  </script>
+    
+</script>
+
+<script type="text/x-handlebars" id="about">
+  <h1>About</h1>
+</script>
+
+<script type="text/x-handlebars" id="account">
+  <h1>Your Account</h1>
+</script>
+
+<script type="text/x-handlebars" id="newsletter">
+  <p><small>The title of your newsletter is: <strong>{{name}}</strong></small></p>
+  {{#if isEditing}}
+  {{partial 'newsletter/edit'}}
+  <button {{action 'doneEditing'}}>Done</button>
+  {{else}}
+  <button {{action 'edit'}}>Change Newsletter Name</button>
+  {{/if}}
+</script>
+
+<script type="text/x-handlebars" id="newsletter/_edit">
+    <p>{{input type="text" value=name}}</p>
+</script>
+
+<script type="text/x-handlebars" id="organizations">
+    organizations
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var org_num = location.pathname.match(/\/user_admin\/(.*)/)[1];
+
+App.Router.map(function() {
+			this.resource('organization', {path: ":organization_id"}, function() {
+				this.resource('account');
+				this.resource('newsletter');
+				 	this.resource('issues', function() {
+		  			this.route('select');
+		  			this.resource('issue', {path: ":issue_id"}, function() {
+		  				this.route('add_article');
+		  				this.route('add_event');
+		  				this.route('preview');
+		  				this.route('summary');
+
+
+
+		  });
+		});
+  });
+  this.resource('about');  
+});
+
+
+App.IssuesRoute = Ember.Route.extend({
+  model: function(params) {
+    return $.getJSON('http://localhost:3000/user_admin_api/newsletters/3/issues');
+  },
+
+  renderTemplate: function() {
+    this.render('issues', {outlet: "nav"});
+  }
+
+});
+
+App.IssueRoute = Ember.Route.extend({
+	model: function(params) {
+    return issues.findBy('id', params.issue_id);
+  }
+});
+
+App.NewsletterRoute = Ember.Route.extend({
+  model: function() {
+    return $.getJSON('http://localhost:3000/user_admin_api/organizations/'+ org_num +'/newsletters');
+  }
+});
+
+App.IndexRoute = Ember.Route.extend({
+	model: function() {
+    return newsletter;
+  },
+
+  renderTemplate: function() {
+    this.render('organization');
+  }
+});
+
+App.OrganizationRoute = Ember.Route.extend({
+	model: function() {
+    return $.getJSON('http://localhost:3000/user_admin_api/organizations/'+ org_num);
+  }
+});
+
+
+
+App.IssueController = Ember.ObjectController.extend({
+	isEditing: false,
+
+	actions: {
+		edit: function() {
+			this.set('isEditing', true)
+		},
+
+		doneEditing: function() {
+			this.set('isEditing', false)
+		}
+	}
+
+});
+
+App.NewsletterController = Ember.ObjectController.extend({
+	isEditing: false,
+
+	actions: {
+		edit: function() {
+			this.set('isEditing', true)
+		},
+
+		doneEditing: function() {
+			this.set('isEditing', false)
+		}
+	}
+
+});
+
+
+Ember.Handlebars.helper('format-date', function(date) {
+	return moment(date).fromNow();
+});
+
+var showdown = new Showdown.converter();
+
+Ember.Handlebars.helper('format-markdown', function(input) {
+	return new Handlebars.SafeString(showdown.makeHtml(input));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 validation/initialization/
 
 

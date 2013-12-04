@@ -7,33 +7,19 @@ class Article
     property :title,                String
     property :summary,              Text
     property :tags,                 String
-    property :article_text,         Text
+    property :article_text,         Text,           :lazy => false
     property :author,               String
     property :img_url,              String
 
-    belongs_to :issue
-
-
-
-    def self.process(attributes)
-        begin
-          article = create(attributes)
-
-        rescue DataMapper::SaveFailureError => e
-          return e.message
-        end
-    end
+    has n, :posts, :constraint => :destroy   
+    has n, :issues, :model => 'Issue', :child_key => [:id], :parent_key => [:issue_id], :through => :posts
 
     def resource_uri
         "/articles/#{self.id}"
     end
     
-    def edit_draft(attr)
+    def edit(attr)
         self.attributes = attr
         self.save
     end
-
-
-
-
 end
