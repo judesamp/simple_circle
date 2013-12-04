@@ -19,19 +19,19 @@ App.Router.map(function() {
 });
 
 App.ApplicationRoute = Ember.Route.extend({
-	setupController: function(controller,model) {
+  setupController: function(controller,model) {
         controller.set('model', model);//UsersEditController
         this.controllerFor('newsletter').set('model',this.store.find('newsletter', 1));
         this.controllerFor('issues').set('model',this.store.find('issue'));
   },
 
-	model: function () {
+  model: function () {
     return this.store.find('organization', 1);
   }
 });
 
 App.IndexRoute = Ember.Route.extend({
-	model: function () {
+  model: function () {
     return this.store.find('newsletter', 1);
   }
 });
@@ -48,6 +48,7 @@ App.IssueRoute = Ember.Route.extend({
   setupController: function(controller,model) {
         controller.set('model', model);//UsersEditController
         this.controllerFor('article').set('model',this.store.find('article'));
+        this.controllerFor('post').set('model',this.store.find('post'));
   },
 
   model: function(params) {
@@ -111,7 +112,7 @@ App.ApplicationController = Ember.ObjectController.extend({
 });
 
 App.IssueController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issue", "article"],
+  needs: ["newsletter", "issue", "article", "post"],
   isEditingIssueName: false,
 
   actions: {
@@ -128,38 +129,24 @@ App.IssueController = Ember.ObjectController.extend({
     },
 
     createNewPost: function(issue, post_position) {
-      var position = post_position;
-      var post = this.store.createRecord('post', {
-        position: entered_position,
-        issue: issue
-      });
-      post.save();
-      return post;
+      
     },
-
-
 
     createNewArticle: function (issue) {
       // Get the todo title set by the "New Todo" text field
       var title = this.get('article_title');
-      if (!title.trim()) { return; }
       var author = this.get('author');
       var article_text = this.get('article_text');
-      var article_position = this.get('position');
       
-      var post = createNewPost(issue, article_position);
+      
+      var post = this.store.createRecord('post', {
+        issue: issue
+      });
+      post.save();
+    
 
       // Create the new Todo model
-      var article = this.store.createRecord('article', {
-        title: title,
-        author: author,
-        body: article_text,
-        post: post
-      });
-
-
-      // Save the new model
-      article.save();
+      
     }
 
   }
@@ -184,6 +171,9 @@ App.IssuesController = Ember.ArrayController.extend({
 App.ArticleController = Ember.ArrayController.extend({
 });
 
+App.PostController = Ember.ArrayController.extend({
+});
+
 
 
 
@@ -199,27 +189,25 @@ App.Organization = DS.Model.extend({
 });
 
 App.Newsletter = DS.Model.extend({
-	title: DS.attr('string'),
+  title: DS.attr('string'),
   subtitle: DS.attr('string')
 });
 
 App.Issue = DS.Model.extend({
-	draft_name: DS.attr('string'),
-  articles: DS.hasMany('article')
+  draft_name: DS.attr('string'),
+  posts: DS.hasMany('post')
 });
 
 App.Article = DS.Model.extend({
   author: DS.attr('string'),
   title: DS.attr('string'),
   body: DS.attr('string'),
-  issue: DS.belongsTo('post')
+  post: DS.belongsTo('post')
 });
 
 
 App.Post = DS.Model.extend({
-  position: DS.attr('integer'),
   articles: DS.hasMany('article'),
-  events: DS.hasMany('event'),
   issue: DS.belongsTo('issue')
 });
 
@@ -235,14 +223,14 @@ App.Organization.FIXTURES = [{
  }];
 
 App.Newsletter.FIXTURES = [{
-   		id: 1,
-   		title: "single fixture title",
-   		subtitle: "single fixture subtitle"
+      id: 1,
+      title: "single fixture title",
+      subtitle: "single fixture subtitle"
  }];
 
  App.Issue.FIXTURES = [{
-   		id: 1,
-   		draft_name: "draft_name"
+      id: 1,
+      draft_name: "draft_name"
  }, 
 
  {
@@ -264,10 +252,8 @@ App.Article.FIXTURES = [
       body: "this is the body of the article"
 } 
 ]
- 
 
-
-
-
-
-
+App.Post.FIXTURES = [{
+  id: 1
+}
+]
