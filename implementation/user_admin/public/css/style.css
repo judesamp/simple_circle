@@ -29,6 +29,7 @@ html, body {
 }
 
 .content_box {
+	padding-top: 75px;
 	font-size: 150%;
 	line-height: 150%;
 	text-align: left;

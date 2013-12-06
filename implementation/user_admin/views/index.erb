@@ -8,22 +8,19 @@
   <script src="js/libs/galleria-1.3.3.min.js"></script>
   <link rel="stylesheet" href="css/normalize.css"></link>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"></link>
-  <link rel="stylesheet" href="js/libs/themes/classic/galleria.classic.css">
   <script src="js/libs/themes/classic/galleria.classic.min.js"></script>
-
   <link rel="stylesheet" href="css/style.css"> 
   <style>
     .galleria{ width: 750px; height: 400px; background: #000; margin: auto; }
-</style>
+  </style>
 </head>
 <body>
 
 <! begin ember app code />
 
 <script type="text/x-handlebars">
-  <div class="navbar navbar-default" role="navigation">
+  <div class="navbar navbar-fixed-top navbar-default " role="navigation">
     <div class="navbar-header">
-      
       
        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-it">
           <span class="sr-only">Toggle navigation</span>
@@ -31,8 +28,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
         <a class="navbar-brand" href="#">SimplyCircular</a>
     </div>
+
     <div class="collapse navbar-collapse collapse_it" id="collapse-it">
         <ul class="nav navbar-nav navbar-right pull-right">
           <li>{{#link-to 'index'}}Home{{/link-to}}</li>
@@ -40,6 +39,7 @@
           <li>{{#link-to 'index'}}Your Account{{/link-to}}</li>  
         </ul>
     </div>
+
   </div>
 
   
@@ -51,50 +51,34 @@
     <div class="wrapper">
       
       <ul class="sidebar_list">
-         
-          
-
-
-
-
-
-
-    
-
-
-
-
-
-
         
-        <p><span class="glyphicon glyphicon-user"></span> <button {{action 'editOrgName'}} class="btn btn-link"> <span class="glyphicon glyphicon-edit"></span></button> | {{partial 'org_name'}} </p>
+        <p> <span class="glyphicon glyphicon-user"></span> <button {{action 'editOrgName'}} class="btn btn-link"> 
+            <span class="glyphicon glyphicon-edit"></span></button> | {{partial 'org_name'}} 
+        </p>
         
 
         <li class="borderline">{{partial 'newsletter_title'}}</li>
-
         <li class="borderline">{{partial 'newsletter_subtitle'}}</li>
         <li class="borderline"><button {{ action 'createNewIssue' }} id="my_new_issue_button" class="btn btn-link">Create a New Issue</button></li>
 
         <br />
 
-  
-          <li class="borderline">{{#link-to 'index'}}Issues{{/link-to}}</li>
+        <li class="borderline">{{#link-to 'index'}}Issues{{/link-to}}</li>
             
        
-          <li class="borderline">{{partial 'issues'}}</li>
-       </ul>
+        <li class="borderline">{{partial 'issues'}}</li>
+      </ul>
         
     
       
-      </div>
     </div>
+  </div>
    
   
  
 
   <div class="workspace">
     <div class="content_box">
-
       {{ outlet }}
     </div>
   </div>
@@ -109,342 +93,317 @@
 
   <script type="text/x-handlebars" id="_issues">
      
-      {{#each controllers.issues}}
-
-        <div class="row">
+    {{#each controllers.issues}}
+      <div class="row">
         <div class="col-xs-8 col-md-8">{{#link-to 'issue.summary' this}} {{draft_name}} {{/link-to}}</div>
           <div class="glyphicon glyphicon-list-alt col-xs-2 col-md-1"></div>
         </div>
       </div>
-
-      {{/each}}
-   
-    
+    {{/each}} 
   </script>
 
-  <script type="text/x-handlebars" id="issue">
-    <div class="centered">
-    <p><small>You are working on an issue named: 
-    {{#if isEditingIssueName}}
-      {{partial 'issue_name/edit'}}
-    {{else}}
-      <strong>{{draft_name}}</strong> 
-      <button {{action 'editIssueName'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></button>
-    {{/if}}
-    </small></p>
-    
+<script type="text/x-handlebars" id="issue">
+  <div class="centered">
+    <p>
+      <small>
+        You are working on an issue named: 
+          {{#if isEditingIssueName}}
+            {{partial 'issue_name/edit'}}
+          {{else}}
+            <strong>{{draft_name}}</strong> 
+            <button {{action 'editIssueName'}} class="btn-xs btn-link">
+              <span class="glyphicon glyphicon-edit"></span>
+            </button>
+          {{/if}}
+      </small>
+    </p>
+  
+    <button data-toggle="modal" data-target="#add_article">
+        Add Article
+    </button>
 
+    <button data-toggle="modal" data-target="#add_event">
+        Add Event
+    </button>
 
-     
-    
-    
-    
-
-        <button data-toggle="modal" data-target="#add_article">
-            Add Article
-        </button>
-        <button data-toggle="modal" data-target="#add_event">
-            Add Event
-        </button>
-        <button {{ action 'startGalleria' }} data-toggle="modal" data-target="#preview">
-            Preview
-        </button>
-        
-        
+    <button {{ action 'startGalleria' }} data-toggle="modal" data-target="#preview">
+        Preview
+    </button>
       
-    
     <br />
     <hr class="nav_rule">
-    </div>
-    
-    
-    
-    
-    {{outlet}}
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h1 class="modal-title" id="myModalLabel">{{controllers.newsletter.title}}</h4>
-        <h4 class="modal-title" id="myModalLabel">{{controllers.newsletter.subtitle}}</h4>
-      </div>
-
-      <div class="modal-body">
-
-        {{#each controllers.issue.posts}}
-
-        <h1>{{title}}</h1>
-        <h4>{{author}}</h4>
-        <div>
-        <p>{{body}}</p>
-        </div>
-          {{/each}} 
-      </div>
-
-     
-      <div class="galleria">
-    <img src="http://www.spaceforaname.com/galleryview/img/photos/bp1.jpg">
-    <img src="http://www.spaceforaname.com/galleryview/img/photos/bp2.jpg">
-    <img src="http://www.spaceforaname.com/galleryview/img/photos/bp4.jpg">
   </div>
-
-
-
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Publish</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="add_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h1 class="modal-title" id="myModalLabel">Adding an Article</h4>
-      </div>
-
-      <form class="form-horizontal article_form">
-    <div class="form-group">
-      <label for="article_title" class="col-sm-2">Title</label>
-      <div class="col-sm-10">
-        {{input type="text" class="form-control" id="article_title" placeholder="Enter your article title" value=article_title}}
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="author" class="col-sm-2">Author</label>
-      <div class="col-sm-10">
-        {{input type="text" class="form-control" id="author" placeholder="Enter the name of the article's author" value=author}}
-      </div>
-    </div>
-
-  <div class="form-group">
-    <label for="article_text" class="col-sm-2">Body Text</label>
-    <div class="col-sm-10">
-    {{ textarea class="form-control" rows="5" id="article_text" placeholder="Enter the text of your article here" value=article_text}}
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="image_asset" class="col-sm-2">File input</label>
-    <div class="col-sm-10">
-    <input type="file" id="image_asset">
-    
-    <p class="help-block">Upload an image to go with your article here.</p>
-    </div>
-  </div>
-
-  <button class="btn btn-default" data-dismiss="modal" {{action "createNewArticle" this}}>Submit</button>
-</form>
-
-   
-
-
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Publish</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="add_event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h1 class="modal-title" id="myModalLabel">Adding an Event</h4>
-      </div>
-
-      <form class="form-horizontal article_form">
-    <div class="form-group">
-      <label for="event_name" class="col-sm-3">Name</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="event_name" placeholder="Enter an event name">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="description" class="col-sm-3">Description</label>
-      <div class="col-sm-9">
-        <textarea class="form-control" rows="3" id="descritpion" placeholder="Enter a description for your event"></textarea>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="location" class="col-sm-3">Location</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="location" placeholder="Enter the location for your event">
-      </div>
-    </div>
-
-     <div class="form-group">
-      <label for="contact_name" class="col-sm-3">Contact</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="contact_name" placeholder="Enter the contact person for your event">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="contact_email" class="col-sm-3">Contact Info</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="contact_info" placeholder="Enter the contact person's email or phone number">
-      </div>
-    </div>
   
-
-  <div class="form-group">
-    <label for="image_asset" class="col-sm-3">File input</label>
-    <div class="col-sm-9">
-    <input type="file" id="image_asset">
-    
-    <p class="help-block">Upload an image to go with your event here.</p>
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
-   
+  {{outlet}}
 
 
+
+
+<!-- Modal -->
+  <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h1 class="modal-title" id="myModalLabel">{{controllers.newsletter.title}}</h4>
+          <h4 class="modal-title" id="myModalLabel">{{controllers.newsletter.subtitle}}</h4>
+        </div>
+
+        <div class="modal-body">
+          {{#each post in controllers.issue.posts}}
+            {{#if post.article}}
+              <h1>{{post.article.title}}</h1>
+              <h4>{{post.article.author}}</h4>
+              <div>
+              <p>{{post.article.body}}</p>
+              </div>
+            {{else}}
+              <h1>{{post.event.event_name}}</h1>
+              <h4>{{post.event.description}}</h4>
+              <p>{{post.event.location}}</p>
+            {{/if}}
+          {{/each}} 
+        </div>
+
+        <div class="galleria">
+          <img src="http://www.spaceforaname.com/galleryview/img/photos/bp1.jpg">
+          <img src="http://www.spaceforaname.com/galleryview/img/photos/bp2.jpg">
+          <img src="http://www.spaceforaname.com/galleryview/img/photos/bp4.jpg">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Publish</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="add_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h1 class="modal-title" id="myModalLabel">Adding an Article</h4>
+        </div>
+
+        <form class="form-horizontal article_form">
+          <div class="form-group">
+            <label for="article_title" class="col-sm-2">Title</label>
+            <div class="col-sm-10">
+              {{input type="text" class="form-control" id="article_title" placeholder="Enter your article title" value=article_title}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="author" class="col-sm-2">Author</label>
+            <div class="col-sm-10">
+              {{input type="text" class="form-control" id="author" placeholder="Enter the name of the article's author" value=author}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="article_text" class="col-sm-2">Body Text</label>
+            <div class="col-sm-10">
+            {{ textarea class="form-control" rows="5" id="article_text" placeholder="Enter the text of your article here" value=article_text}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="position" class="col-sm-2">Body Text</label>
+            <div class="col-sm-10">
+            {{ input type="text" class="form-control" rows="5" id="position" placeholder="position" value=position}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="image_asset" class="col-sm-2">File input</label>
+            <div class="col-sm-10">
+            <input type="file" id="image_asset">
+            
+            <p class="help-block">Upload an image to go with your article here.</p>
+            </div>
+          </div>
+
+          <button class="btn btn-default" data-dismiss="modal" {{action "createNewArticle" this}}>Submit</button>
+        </form>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Publish</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="add_event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h1 class="modal-title" id="myModalLabel">Adding an Event</h4>
+        </div>
+
+        <form class="form-horizontal article_form">
+          <div class="form-group">
+            <label for="event_name" class="col-sm-3">Name</label>
+            <div class="col-sm-9">
+              {{input type="text" class="form-control" id="event_name" placeholder="Enter your event's name" value=event_name}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="col-sm-3">Description</label>
+            <div class="col-sm-9">
+              {{input type="textarea" class="form-control" id="description" placeholder="Enter your description" value=description}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location" class="col-sm-3">Location</label>
+            <div class="col-sm-9">
+              {{input type="text" class="form-control" id="location" placeholder="Enter the location of this event" value=location}}
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="contact_name" class="col-sm-3">Contact</label>
+            <div class="col-sm-9">
+              {{input type="text" class="form-control" id="contact_name" placeholder="Enter the name of the contact person for this event" value=contact_name}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact_email" class="col-sm-3">Contact Info</label>
+            <div class="col-sm-9">
+            {{input type="text" class="form-control" id="contact_info" placeholder="Enter the contact person's email or phone number" value=contact_info}}
+            </div>
+          </div>
+
+          <div class="form-group">
+          <label for="position" class="col-sm-2">Position</label>
+          <div class="col-sm-10">
+          {{ input type="text" class="form-control" rows="5" id="event_position" placeholder="position" value=position}}
+          </div>
+        </div>
         
 
-       
+        <div class="form-group">
+          <label for="image_asset" class="col-sm-3">File input</label>
+          <div class="col-sm-9">
+          <input type="file" id="image_asset">
+          
+          <p class="help-block">Upload an image to go with your event here.</p>
+          </div>
+        </div>
 
+        <button class="btn btn-default" data-dismiss="modal" {{action "createNewEvent" this}}>Submit</button>
+      </form>
 
-
-
-      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Publish</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/x-handlebars" id="issues/create">
+  create an issue
+</script>
 
 
+<script type="text/x-handlebars" id="_newsletter_title">
+  {{#if isEditingTitle}}
+    {{partial 'newsletter_title/edit'}}
+  {{else}}
+    {{controllers.newsletter.title}}
+    <button {{action 'editTitle'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></button>
+  {{/if}}
+</script>
 
-  </script>
+<script type="text/x-handlebars" id="newsletter_title/_edit">
+  <span class="form-horizontal">
+    {{input type="text" value=controllers.newsletter.title}}
+    <button {{action 'doneEditingTitle'}} class="btn-xs">Done <i class="icon-ok-sign"></i></button>
+  </span>
+</script>
 
-  <script type="text/x-handlebars" id="issues/create">
-    create an issue
-  </script>
+<script type="text/x-handlebars" id="_newsletter_subtitle">
+  {{#if isEditingSubtitle}}
+    {{partial 'newsletter_subtitle/edit'}}
+  {{else}}
+    {{controllers.newsletter.subtitle}}
+    <button {{action 'editSubtitle'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></i></button>
+  {{/if}}
+</script>
 
+<script type="text/x-handlebars" id="newsletter_subtitle/_edit">
+  <span class="form-horizontal">
+    {{input type="text" value=controllers.newsletter.subtitle}}
+    <button {{action 'doneEditingSubtitle'}} class="btn-xs btn-mini">Done <i class="icon-ok-sign"></i></button>
+  </span>
+</script>
 
-  <script type="text/x-handlebars" id="_newsletter_title">
-    {{#if isEditingTitle}}
-      {{partial 'newsletter_title/edit'}}
-    {{else}}
-      {{controllers.newsletter.title}}
-      <button {{action 'editTitle'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></button>
-    {{/if}}
-  </script>
-
-  <script type="text/x-handlebars" id="newsletter_title/_edit">
-    <span class="form-horizontal">
-      {{input type="text" value=controllers.newsletter.title}}
-      <button {{action 'doneEditingTitle'}} class="btn-xs">Done <i class="icon-ok-sign"></i></button>
-    </span>
-  </script>
-
-  <script type="text/x-handlebars" id="_newsletter_subtitle">
-    {{#if isEditingSubtitle}}
-      {{partial 'newsletter_subtitle/edit'}}
-    {{else}}
-      {{controllers.newsletter.subtitle}}
-      <button {{action 'editSubtitle'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></i></button>
-    {{/if}}
-  </script>
-
-  <script type="text/x-handlebars" id="newsletter_subtitle/_edit">
-    <span class="form-horizontal">
-      {{input type="text" value=controllers.newsletter.subtitle}}
-      <button {{action 'doneEditingSubtitle'}} class="btn-xs btn-mini">Done <i class="icon-ok-sign"></i></button>
-    </span>
-  </script>
-
-  <script type="text/x-handlebars" id="_org_name">
-    {{#if isEditingOrgName}}
-      {{partial 'org_name/edit'}}
-    {{else}}
-    
-      {{name}}
-
-      <button {{action 'editOrgName'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></button>
-    {{/if}}
-  </script>
-
-  <script type="text/x-handlebars" id="org_name/_edit">
-    <span class="form-horizontal">
-      {{input type="text" class="my_input_size" value=name}}
-      <button {{action 'doneEditingOrgName'}} class="btn-xs btn-mini">Done <i class="icon-ok-sign"></i></button>
-    </span>
-  </script>
-
-  <script type="text/x-handlebars" id="issue_name/_edit">
-    <span class="form-horizontal">
-      {{input type="text" value=draft_name}}
-      <button {{action 'doneEditingIssueName'}} class="btn-xs">Done</button>
-    </span>
-  </script>
-
-  <script type="text/x-handlebars" id="issue/summary">
-    <div>
-      <ul class="list_with_no_style">
-        <li>Newsletter Title: {{controllers.newsletter.title}}</li>
-        <li>Newsletter Subtitle: {{controllers.newsletter.subtitle}}</li>
-
-        {{#each controllers.issue.posts}}
-          {{title}}
-
-        {{/each}}
-      </ul>
-    </div>
-  </script>
+<script type="text/x-handlebars" id="_org_name">
+  {{#if isEditingOrgName}}
+    {{partial 'org_name/edit'}}
+  {{else}}
   
+    {{name}}
 
+    <button {{action 'editOrgName'}} class="btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span></button>
+  {{/if}}
+</script>
 
+<script type="text/x-handlebars" id="org_name/_edit">
+  <span class="form-horizontal">
+    {{input type="text" class="my_input_size" value=name}}
+    <button {{action 'doneEditingOrgName'}} class="btn-xs btn-mini">Done <i class="icon-ok-sign"></i></button>
+  </span>
+</script>
 
+<script type="text/x-handlebars" id="issue_name/_edit">
+  <span class="form-horizontal">
+    {{input type="text" value=draft_name}}
+    <button {{action 'doneEditingIssueName'}} class="btn-xs">Done</button>
+  </span>
+</script>
 
+<script type="text/x-handlebars" id="issue/summary">
+  <div>
+    <ul class="list_with_no_style">
+      <li>Newsletter Title: {{controllers.newsletter.title}}</li>
+      <li>Newsletter Subtitle: {{controllers.newsletter.subtitle}}</li>
 
-
-  
-
-
- 
- 
+      {{#each post in controllers.issue.posts}}
+        
+        {{#if post.article}}
+        <p>{{post.position}}: {{post.article.title}}</p>
+        {{else}}
+        
+        <p>{{post.position}}: {{post.event.event_name}}</p>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
 </script>
   
-
 <!ember/app dependencies below />
 
-
-  
-  <script src="js/libs/handlebars-1.0.0.js"></script>
-  <script src="js/libs/ember-1.1.2.js"></script>
-  <script src="js/libs/ember-data.js"></script>
-  <script src="js/libs/localstorage_adapter.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
-  <script src="js/app.js"></script>
+<script src="js/libs/handlebars-1.0.0.js"></script>
+<script src="js/libs/ember-1.2.0.js"></script>
+<script src="js/libs/ember-data.js"></script>
+<script src="js/libs/localstorage_adapter.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+<script src="js/app.js"></script>
 
 
 </body>

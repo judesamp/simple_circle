@@ -1712,3 +1712,10 @@ STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
 ERROR:  insert or update on table "issues" violates foreign key constraint "issues_newsletter_fk"
 DETAIL:  Key (newsletter_id)=(1) is not present in table "newsletters".
 STATEMENT:  INSERT INTO "issues" ("newsletter_id") VALUES (1) RETURNING "id"
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-12-05 19:46:36 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

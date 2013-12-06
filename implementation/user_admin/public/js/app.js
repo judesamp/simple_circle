@@ -4,6 +4,7 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Router.map(function() {
   this.resource('article');
+  this.resource('event');
   this.resource('issues', function() {
     this.route('create');
     this.resource('issue', {path: ":issue_id"}, function() {
@@ -46,22 +47,18 @@ App.IssuesRoute = Ember.Route.extend({
 
 App.IssueRoute = Ember.Route.extend({
   setupController: function(controller,model) {
-        controller.set('model', model);//UsersEditController
+        this._super(controller,model);
+        controller.set('model', model);
         this.controllerFor('article').set('model',this.store.find('article'));
-        this.controllerFor('post').set('model',this.store.find('post'));
+        this.controllerFor('event').set('model',this.store.find('event'));
+        this.controllerFor('post').get('model');
+
   },
 
   model: function(params) {
     return issues.findBy('id', params.issue_id);
   }
 });
-
-
-
-
-
-
-
 
 
 App.ApplicationController = Ember.ObjectController.extend({
@@ -112,7 +109,8 @@ App.ApplicationController = Ember.ObjectController.extend({
 });
 
 App.IssueController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issue", "article", "post"],
+  needs: ["newsletter", "issue", "article", "post", "event"],
+
   isEditingIssueName: false,
 
   actions: {
@@ -128,7 +126,35 @@ App.IssueController = Ember.ObjectController.extend({
       Galleria.run('.galleria', {responsive:true,height:0.5625});
     },
 
-    createNewPost: function(issue, post_position) {
+    createNewEvent: function (issue) {
+      // Get the todo title set by the "New Todo" text field
+      var event_name = this.get('event_name');
+      var description = this.get('description');
+      var location = this.get('location');
+      var contact_name = this.get('contact_name');
+      var contact_info = this.get('contact_info');
+      var position = this.get('content.posts').get('length') + 1;
+      
+      var post = this.store.createRecord('post', {
+        position: position,
+        issue: issue
+      });
+      post.save();
+    
+
+      var event = this.store.createRecord('event', {
+        event_name: event_name,
+        description: description,
+        location: location,
+        contact_name: contact_name,
+        contact_info: contact_info,
+        post: post
+      });
+
+
+      // Save the new model
+      event.save();
+      // Create the new Todo model
       
     },
 
@@ -137,23 +163,46 @@ App.IssueController = Ember.ObjectController.extend({
       var title = this.get('article_title');
       var author = this.get('author');
       var article_text = this.get('article_text');
-      
-      
+      var position = this.get('content.posts').get('length') + 1;
+  
+
+
+  
+
       var post = this.store.createRecord('post', {
+        position: position,
         issue: issue
       });
       post.save();
     
 
+      var article = this.store.createRecord('article', {
+        title: title,
+        author: author,
+        body: article_text,
+        post: post
+      });
+
+
+      // Save the new model
+      article.save();
       // Create the new Todo model
       
     }
 
-  }
+  },
+
+    posts: (function() {
+        return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+          content: this.get('content.posts'),
+          sortProperties: ['position'],
+          sortAscending: true          
+        })
+      }).property('content.posts'),
 });
 
 App.IssueSummaryController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issue", "article"]
+  needs: ["newsletter", "issue", "article", "post"]
 });
 
 
@@ -171,7 +220,13 @@ App.IssuesController = Ember.ArrayController.extend({
 App.ArticleController = Ember.ArrayController.extend({
 });
 
+App.EventController = Ember.ArrayController.extend({
+});
+
+
 App.PostController = Ember.ArrayController.extend({
+  sortProperties: ['position'],
+  sortAscending: true
 });
 
 
@@ -205,11 +260,24 @@ App.Article = DS.Model.extend({
   post: DS.belongsTo('post')
 });
 
+App.Event = DS.Model.extend({
+  event_name: DS.attr('string'),
+  description: DS.attr('string'),
+  location: DS.attr('string'),
+  contact_name: DS.attr('string'),
+  contact_info: DS.attr('string'),
+  post: DS.belongsTo('post')
+});
+
 
 App.Post = DS.Model.extend({
-  articles: DS.hasMany('article'),
+  position: DS.attr('number'),
+  article: DS.belongsTo('article'),
+  event: DS.belongsTo('event'),
   issue: DS.belongsTo('issue')
 });
+
+
 
 
 
@@ -256,4 +324,10 @@ App.Article.FIXTURES = [
 App.Post.FIXTURES = [{
   id: 1
 }
+]
+
+App.Event.FIXTURES = [
+{
+      id: 1
+} 
 ]
