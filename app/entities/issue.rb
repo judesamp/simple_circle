@@ -1,7 +1,3 @@
-require "dm_noisy_failures"
-
-require 'dm-timestamps'
-
 class Issue
   include DataMapper::Resource
   property :id,						           Serial

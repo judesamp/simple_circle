@@ -6,7 +6,13 @@ gem 'mustache'
 gem 'data_mapper'
 gem 'pg'
 gem "dm-postgres-adapter"
+gem 'dm-timestamps'
 gem "dm-noisy-failures", "~> 0.2.3"
+gem 'mini_magick'
+gem 'fog', "~> 1.3.1"
+gem 'carrierwave'
+gem 'carrierwave-datamapper'
+
  
 group :development do
   gem 'thin'

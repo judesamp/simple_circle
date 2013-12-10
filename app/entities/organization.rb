@@ -1,5 +1,3 @@
-
-
 class Organization
   include DataMapper::Resource
   validates_presence_of :name

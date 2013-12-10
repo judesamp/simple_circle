@@ -5,14 +5,17 @@
 <title>SimplyCircular</title>
   
   <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/jquery-ui-1.10.3.js"></script>
   <script src="js/libs/galleria-1.3.3.min.js"></script>
   <link rel="stylesheet" href="css/normalize.css"></link>
+  <link rel="stylesheet" href="css/jquery-ui-1.10.3.min.css"></link>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"></link>
   <script src="js/libs/themes/classic/galleria.classic.min.js"></script>
   <link rel="stylesheet" href="css/style.css"> 
   <style>
     .galleria{ width: 750px; height: 400px; background: #000; margin: auto; }
   </style>
+  
 </head>
 <body>
 
@@ -122,8 +125,12 @@
         Add Article
     </button>
 
-    <button data-toggle="modal" data-target="#add_event">
+    <button {{ action 'startDatepicking' }} data-toggle="modal" data-target="#add_event">
         Add Event
+    </button>
+
+    <button data-toggle="modal" data-target="#add_video">
+        Add Video
     </button>
 
     <button {{ action 'startGalleria' }} data-toggle="modal" data-target="#preview">
@@ -149,19 +156,39 @@
           <h4 class="modal-title" id="myModalLabel">{{controllers.newsletter.subtitle}}</h4>
         </div>
 
+
+
+
+
+
         <div class="modal-body">
           {{#each post in controllers.issue.posts}}
             {{#if post.article}}
-              <h1>{{post.article.title}}</h1>
-              <h4>{{post.article.author}}</h4>
-              <div>
-              <p>{{post.article.body}}</p>
+              <div class="article_div">
+                <h1>{{post.article.title}}</h1>
+                <h4>{{post.article.author}}</h4>
+                <div class="content_div">
+                  <p>{{post.article.body}}</p>
+                </div>
               </div>
-            {{else}}
+            {{/if}}
+            {{#if post.event}}
+              <div class="event_div">
               <h1>{{post.event.event_name}}</h1>
+              <img src="{{unbound post.event.top_image}}" />
               <h4>{{post.event.description}}</h4>
               <p>{{post.event.location}}</p>
+              </div>
             {{/if}}
+            {{#if post.video}}
+            <h1>{{post.video.title}}</h1>
+            <div class="video_wrapper">
+            <iframe margin="auto" width="560" height="315" src="{{unbound post.video.video_id}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p>{{post.video.caption}}</p>
+            {{/if}}
+
+
           {{/each}} 
         </div>
 
@@ -208,13 +235,6 @@
             <label for="article_text" class="col-sm-2">Body Text</label>
             <div class="col-sm-10">
             {{ textarea class="form-control" rows="5" id="article_text" placeholder="Enter the text of your article here" value=article_text}}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="position" class="col-sm-2">Body Text</label>
-            <div class="col-sm-10">
-            {{ input type="text" class="form-control" rows="5" id="position" placeholder="position" value=position}}
             </div>
           </div>
 
@@ -277,6 +297,22 @@
             </div>
           </div>
 
+
+          <div class="form-group">
+            <label for="contact_name" class="col-sm-3">Dates of Event</label>
+            <div class="col-sm-9">
+              <div class="col-sm-6">
+              {{input type="text" class="form-control" id="begin_date_datepicker" placeholder="Enter event's date" value=event_start_date}}
+              </div>
+              <div class="col-sm-6">
+              {{input type="text" class="form-control" id="end_date_datepicker" placeholder="Enter event's end date (if applicable)" value=event_end_date}}
+              </div>
+            </div>
+          </div>
+
+
+
+
           <div class="form-group">
             <label for="contact_email" class="col-sm-3">Contact Info</label>
             <div class="col-sm-9">
@@ -285,21 +321,13 @@
           </div>
 
           <div class="form-group">
-          <label for="position" class="col-sm-2">Position</label>
-          <div class="col-sm-10">
-          {{ input type="text" class="form-control" rows="5" id="event_position" placeholder="position" value=position}}
+            <label for="image_asset" class="col-sm-3">File input</label>
+            <div class="col-sm-9">
+            {{input type="file" class="form-control" id="top_image"}}
+            
+            <p class="help-block">Upload an image to go with your event here.</p>
+            </div>
           </div>
-        </div>
-        
-
-        <div class="form-group">
-          <label for="image_asset" class="col-sm-3">File input</label>
-          <div class="col-sm-9">
-          <input type="file" id="image_asset">
-          
-          <p class="help-block">Upload an image to go with your event here.</p>
-          </div>
-        </div>
 
         <button class="btn btn-default" data-dismiss="modal" {{action "createNewEvent" this}}>Submit</button>
       </form>
@@ -311,7 +339,57 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="add_video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h1 class="modal-title" id="myModalLabel">Adding a Video</h4>
+        </div>
+
+         <form class="form-horizontal article_form">
+          <div class="form-group">
+            <label for="title" class="col-sm-3">Title</label>
+            <div class="col-sm-9">
+              {{input type="text" class="form-control" id="title" placeholder="Enter a title or heading for your video" value=title}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="caption" class="col-sm-3">Caption</label>
+            <div class="col-sm-9">
+              {{input type="text" class="form-control" id="caption" placeholder="Enter a caption for your video" value=caption}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="video_id" class="col-sm-3">Video ID</label>
+            <div class="col-sm-9">
+              {{input type="text" class="form-control" id="video_id" placeholder="Enter the id of your YouTube video" value=video_id}}
+            </div>
+          </div>
+
+         <button class="btn btn-default" data-dismiss="modal" {{action "createNewVideo" this}}>Submit</button>
+        </form>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Publish</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </script>
+
+
+
+ 
+
+
 
 <script type="text/x-handlebars" id="issues/create">
   create an issue
@@ -376,18 +454,38 @@
 </script>
 
 <script type="text/x-handlebars" id="issue/summary">
+
+  
+  <form name="form1" method="post" enctype="multipart/form-data" action="/upload">
+    <div>
+        <label for="caption">Image Caption</label>
+        <input name="caption" type="text" />
+    </div>
+    <div>
+        <label for="image1">Image File</label>
+        <input name="top_image" type="file" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+
+
   <div>
-    <ul class="list_with_no_style">
+       <ul class="sortable list_with_no_style">
       <li>Newsletter Title: {{controllers.newsletter.title}}</li>
       <li>Newsletter Subtitle: {{controllers.newsletter.subtitle}}</li>
 
       {{#each post in controllers.issue.posts}}
-        
+       
         {{#if post.article}}
-        <p>{{post.position}}: {{post.article.title}}</p>
-        {{else}}
-        
-        <p>{{post.position}}: {{post.event.event_name}}</p>
+        <li class="post" data-id={{unbound post.id}}>{{post.position}}: {{post.article.title}}</li>
+        {{/if}}
+        {{#if post.event}}
+        <li class="post" data-id={{unbound post.id}}>{{post.position}}: {{post.event.event_name}}</li>
+        {{/if}}
+        {{#if post.video}}
+        <li class="post" data-id={{unbound post.id}}>{{post.position}}: {{post.video.title}}</li>
         {{/if}}
       {{/each}}
     </ul>

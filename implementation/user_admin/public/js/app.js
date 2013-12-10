@@ -51,6 +51,7 @@ App.IssueRoute = Ember.Route.extend({
         controller.set('model', model);
         this.controllerFor('article').set('model',this.store.find('article'));
         this.controllerFor('event').set('model',this.store.find('event'));
+        this.controllerFor('video').set('model',this.store.find('video'));
         this.controllerFor('post').get('model');
 
   },
@@ -109,7 +110,7 @@ App.ApplicationController = Ember.ObjectController.extend({
 });
 
 App.IssueController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issue", "article", "post", "event"],
+  needs: ["newsletter", "issue", "article", "post", "event", "video"],
 
   isEditingIssueName: false,
 
@@ -126,8 +127,38 @@ App.IssueController = Ember.ObjectController.extend({
       Galleria.run('.galleria', {responsive:true,height:0.5625});
     },
 
+    startDatepicking: function() {
+      $( "#end_date_datepicker" ).datepicker();
+      $( "#begin_date_datepicker" ).datepicker();
+    },
+
+    createNewVideo: function (issue) {
+      var video_id = "//www.youtube.com/embed/" + this.get('video_id');
+      var title = this.get('title');
+      var caption = this.get('caption');
+      var position = this.get('content.posts').get('length') + 1;
+      
+      var post = this.store.createRecord('post', {
+        position: position,
+        issue: issue
+      });
+      post.save();
+    
+      var video = this.store.createRecord('video', {
+        video_id: video_id,
+        title: title,
+        caption: caption,
+        post: post
+      });
+
+      this.set('video_id', '');
+      alert(video_id);
+      video.save();  
+    },
+
     createNewEvent: function (issue) {
       // Get the todo title set by the "New Todo" text field
+      var top_image = this.get('top_image');
       var event_name = this.get('event_name');
       var description = this.get('description');
       var location = this.get('location');
@@ -141,8 +172,8 @@ App.IssueController = Ember.ObjectController.extend({
       });
       post.save();
     
-
       var event = this.store.createRecord('event', {
+        top_image: top_image,
         event_name: event_name,
         description: description,
         location: location,
@@ -151,11 +182,13 @@ App.IssueController = Ember.ObjectController.extend({
         post: post
       });
 
+      this.set('event_name', '');
+      this.set('description', '');
+      this.set('location', '');
+      this.set('contact_name', '');
+      this.set('contact_info', '');
 
-      // Save the new model
-      event.save();
-      // Create the new Todo model
-      
+      event.save();  
     },
 
     createNewArticle: function (issue) {
@@ -165,17 +198,12 @@ App.IssueController = Ember.ObjectController.extend({
       var article_text = this.get('article_text');
       var position = this.get('content.posts').get('length') + 1;
   
-
-
-  
-
       var post = this.store.createRecord('post', {
         position: position,
         issue: issue
       });
       post.save();
     
-
       var article = this.store.createRecord('article', {
         title: title,
         author: author,
@@ -183,13 +211,12 @@ App.IssueController = Ember.ObjectController.extend({
         post: post
       });
 
+      this.set('article_title', '');
+      this.set('author', '');
+      this.set('article_text', '');
 
-      // Save the new model
-      article.save();
-      // Create the new Todo model
-      
-    }
-
+      article.save(); 
+    },
   },
 
     posts: (function() {
@@ -199,6 +226,15 @@ App.IssueController = Ember.ObjectController.extend({
           sortAscending: true          
         })
       }).property('content.posts'),
+
+    updateSortOrder: function(indexes) {
+      this.get('content.posts').beginPropertyChanges();
+      this.get('content.posts').forEach(function(item) {
+        var index = indexes[item.get('id')];
+        item.set('position', index + 1);
+      }, this);
+      this.endPropertyChanges();
+    }
 });
 
 App.IssueSummaryController = Ember.ObjectController.extend({
@@ -223,12 +259,37 @@ App.ArticleController = Ember.ArrayController.extend({
 App.EventController = Ember.ArrayController.extend({
 });
 
+App.VideoController = Ember.ArrayController.extend({
+});
+
 
 App.PostController = Ember.ArrayController.extend({
   sortProperties: ['position'],
   sortAscending: true
 });
 
+
+
+App.IssueView = Ember.View.extend({
+  sortProperties: ['position'],
+
+  didInsertElement: function() {
+    var controller = this.get('controller');
+    this.$(".sortable").sortable({
+      update: function(event, ui) {
+        var indexes = {};
+
+        $(this).find('.post').each(function(index) {
+          indexes[$(this).data('id')] = index;
+        });
+
+        $(this).sortable('cancel');
+
+        controller.updateSortOrder(indexes);
+      }
+    });
+  }
+});
 
 
 
@@ -269,13 +330,22 @@ App.Event = DS.Model.extend({
   post: DS.belongsTo('post')
 });
 
+App.Video = DS.Model.extend({
+  title: DS.attr('string'),
+  caption: DS.attr('string'),
+  video_id: DS.attr('string'),
+  post: DS.belongsTo('post')
+});
+
 
 App.Post = DS.Model.extend({
   position: DS.attr('number'),
   article: DS.belongsTo('article'),
   event: DS.belongsTo('event'),
+  video: DS.belongsTo('video'),
   issue: DS.belongsTo('issue')
 });
+
 
 
 
@@ -327,6 +397,12 @@ App.Post.FIXTURES = [{
 ]
 
 App.Event.FIXTURES = [
+{
+      id: 1
+} 
+]
+
+App.Video.FIXTURES = [
 {
       id: 1
 } 

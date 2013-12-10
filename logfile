@@ -1719,3 +1719,25 @@ LOG:  database system is shut down
 LOG:  database system was shut down at 2013-12-05 19:46:36 EST
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+WARNING:  pgstat wait timeout
+FATAL:  role "postgres" does not exist
+ERROR:  syntax error at or near "PRAGMA" at character 1
+STATEMENT:  PRAGMA temp_store = MEMORY
+ERROR:  syntax error at or near "PRAGMA" at character 1
+STATEMENT:  PRAGMA temp_store = MEMORY
+ERROR:  syntax error at or near "PRAGMA" at character 1
+STATEMENT:  PRAGMA temp_store = MEMORY
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.

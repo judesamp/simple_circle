@@ -1,5 +1,3 @@
-require "dm_noisy_failures"
-
 class Event
   include DataMapper::Resource
   	validates_presence_of :event_name

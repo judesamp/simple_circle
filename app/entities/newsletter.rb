@@ -1,5 +1,3 @@
-require 'dm-timestamps'
-
 class Newsletter
   include DataMapper::Resource
   validates_presence_of :title

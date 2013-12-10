@@ -10,8 +10,17 @@ module Implementation
         }
         
         
-    get '/' do
-      "test"
+    post '/upload' do
+      puts params[:file]
+
+       begin
+        article = Article.new(:issue_id => 1, :title => "My title")
+        article.top_image = params[:top_image]
+        article.save
+        puts article.to_json
+      rescue DataMapper::SaveFailureError => e
+        return e.message
+      end
       
     end
     

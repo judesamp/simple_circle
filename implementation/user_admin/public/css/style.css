@@ -4,7 +4,7 @@ html, body {
 }
 
 .side_nav {
-	margin: 0;
+	margin: 50px 0 0 0;
 	padding: 10px 0 0 0;
 	position: fixed;
 	height: 100%;
@@ -79,11 +79,30 @@ html, body {
 	margin: auto;
 }
 
+#preview {
+	text-align:center;
+}
+
 #my_new_issue_button {
 	padding: 0px;
 }
 input.my_input_size { 
 	width: 125px; 
+}
+.video_wrapper {
+}
+
+.video_embed {
+	margin:auto;
+}
+
+
+.article_div {
+	text-align: left;
+}
+
+.event_div {
+	text-align: left;
 }
 /* Large desktop */
 @media (max-width: 1100px) {

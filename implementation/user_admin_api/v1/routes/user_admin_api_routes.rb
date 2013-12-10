@@ -3,7 +3,6 @@ module Implementation
         class V1 < Sinatra::Base
             require 'json'
 
-
         #organizations
             #create an organization--updated
             post '/organizations' do
