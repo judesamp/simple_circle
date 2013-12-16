@@ -3,23 +3,34 @@ App = Ember.Application.create();
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Router.map(function() {
-  this.resource('article');
-  this.resource('event');
   this.resource('issues', function() {
     this.route('create');
     this.resource('issue', {path: ":issue_id"}, function() {
+        this.resource('articles', function() {
+          this.resource('article', {path: ":article_id"});
+        });
+
+        this.resource('events', function() {
+          this.resource('event', {path: ":event_id"});
+        });
+
+        this.resource('videos', function() {
+          this.resource('video', {path: ":video_id"});
+        });
+
         this.route('edit_issue_name');
         this.route('add_article');
         this.route('add_event');
         this.route('preview');
         this.route('summary');
     });
-    
   });
-
 });
 
 App.ApplicationRoute = Ember.Route.extend({
+  ready: function () {
+        
+  },
   setupController: function(controller,model) {
         controller.set('model', model);//UsersEditController
         this.controllerFor('newsletter').set('model',this.store.find('newsletter', 1));
@@ -61,6 +72,44 @@ App.IssueRoute = Ember.Route.extend({
   }
 });
 
+App.ArticlesRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('article');
+  }
+});
+
+App.ArticleRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.findBy('id', params.article_id);
+  }
+});
+
+App.EventsRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('event');
+  }
+});
+
+App.EventRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.findBy('id', params.event_id);
+  }
+});
+
+App.VideosRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('event');
+  }
+});
+
+App.VideoRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.findBy('id', params.video_id);
+  }
+});
+
+
+
 
 App.ApplicationController = Ember.ObjectController.extend({
   needs: ["newsletter", "issues", "issue"],
@@ -94,22 +143,26 @@ App.ApplicationController = Ember.ObjectController.extend({
       this.set('isEditingOrgName', false)
     },
 
-    createNewIssue: function () {
-      // Get the todo title set by the "New Todo" text field
-      
-      // Create the new Todo model
+    triggerNewIssuePopover: function () {
+      $("#create_new_issue_popover").removeClass("hide");
+    },
+
+    createNewIssue: function (info) {
+      $("#create_new_issue_popover").addClass("hide");
+      var draft_name = this.get('draft_name');
       var issue = this.store.createRecord('issue', {
-        draft_name: "default issue name"
+        draft_name: draft_name
       });
 
-      // Save the new model
       issue.save();
+      this.set('draft_name', '');
     }
 
   }
 });
 
 App.IssueController = Ember.ObjectController.extend({
+  
   needs: ["newsletter", "issue", "article", "post", "event", "video"],
 
   isEditingIssueName: false,
@@ -123,7 +176,7 @@ App.IssueController = Ember.ObjectController.extend({
       this.set('isEditingIssueName', false)
     },
 
-    startGalleria: function() {
+    prepareModal: function() {
       Galleria.run('.galleria', {responsive:true,height:0.5625});
     },
 
@@ -132,8 +185,21 @@ App.IssueController = Ember.ObjectController.extend({
       $( "#begin_date_datepicker" ).datepicker();
     },
 
+    uploadImage: function(issue) {
+      var controller_with_context = this;
+      var options = { 
+        success: function(data) {
+          controller_with_context.send('createNewArticle', issue, data);
+        },
+        dataType: 'json'  
+      }; 
+      var form = $('#article_form').ajaxSubmit(options);
+    },
+
     createNewVideo: function (issue) {
-      var video_id = "//www.youtube.com/embed/" + this.get('video_id');
+
+
+      var video_id = "//www.youtube.com/embed/" + this.get('video_id') + "?enablejsapi&wmode=opaque";
       var title = this.get('title');
       var caption = this.get('caption');
       var position = this.get('content.posts').get('length') + 1;
@@ -145,20 +211,18 @@ App.IssueController = Ember.ObjectController.extend({
       post.save();
     
       var video = this.store.createRecord('video', {
-        video_id: video_id,
+        embedded_video_id: video_id,
         title: title,
         caption: caption,
         post: post
       });
 
       this.set('video_id', '');
-      alert(video_id);
       video.save();  
     },
 
     createNewEvent: function (issue) {
       // Get the todo title set by the "New Todo" text field
-      var top_image = this.get('top_image');
       var event_name = this.get('event_name');
       var description = this.get('description');
       var location = this.get('location');
@@ -191,61 +255,61 @@ App.IssueController = Ember.ObjectController.extend({
       event.save();  
     },
 
-    createNewArticle: function (issue) {
-      // Get the todo title set by the "New Todo" text field
-      var title = this.get('article_title');
+    createNewArticle: function (issue, data) {
+      var title = this.get('title');
       var author = this.get('author');
-      var article_text = this.get('article_text');
+      var body = this.get('body');
+      var top_image = data.top_image.top_image.padded.url;
       var position = this.get('content.posts').get('length') + 1;
-  
+
       var post = this.store.createRecord('post', {
         position: position,
         issue: issue
       });
       post.save();
-    
+      
       var article = this.store.createRecord('article', {
         title: title,
         author: author,
-        body: article_text,
+        body: body,
+        top_image: top_image, 
         post: post
       });
 
-      this.set('article_title', '');
+      this.set('title', '');
       this.set('author', '');
-      this.set('article_text', '');
+      this.set('body', '');
 
-      article.save(); 
+      article.save();
+      $('#add_article').modal('hide');
     },
+
+    
   },
 
-    posts: (function() {
-        return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
-          content: this.get('content.posts'),
-          sortProperties: ['position'],
-          sortAscending: true          
-        })
-      }).property('content.posts'),
+ 
 
-    updateSortOrder: function(indexes) {
-      this.get('content.posts').beginPropertyChanges();
-      this.get('content.posts').forEach(function(item) {
-        var index = indexes[item.get('id')];
-        item.set('position', index + 1);
-      }, this);
-      this.endPropertyChanges();
-    }
+  posts: (function() {
+    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+      content: this.get('content.posts'),
+      sortProperties: ['position'],
+      sortAscending: true          
+    })
+    }).property('content.posts'),
+
+  updateSortOrder: function(indexes) {
+    this.get('content.posts').beginPropertyChanges();
+    this.get('content.posts').forEach(function(item) {
+      var index = indexes[item.get('id')];
+      item.set('position', index + 1);
+    }, this);
+    this.endPropertyChanges();
+  }
 });
 
 App.IssueSummaryController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issue", "article", "post"]
+  needs: ["newsletter", "issue", "article", "post", "video"],
 });
-
-
-
-
-
-
 
 App.NewsletterController = Ember.ObjectController.extend({
 });
@@ -253,13 +317,82 @@ App.NewsletterController = Ember.ObjectController.extend({
 App.IssuesController = Ember.ArrayController.extend({
 });
 
-App.ArticleController = Ember.ArrayController.extend({
+
+App.ArticlesController = Ember.ArrayController.extend({
 });
 
-App.EventController = Ember.ArrayController.extend({
+App.ArticleController = Ember.ObjectController.extend({
+  actions: {
+    updateArticle: function (issue, data) {
+      var title = this.get('title');
+      var author = this.get('author');
+      var body = this.get('body');
+      //var top_image = data.top_image.top_image.padded.url;
+      
+
+      var article = this.get('model');
+      article.set('title', title);
+      article.set('author', author);
+      article.set('body', body);
+
+      article.save(); 
+      
+      this.transitionToRoute('issue.summary');
+    },
+  }
 });
 
-App.VideoController = Ember.ArrayController.extend({
+App.EventsController = Ember.ArrayController.extend({
+  
+});
+
+App.EventController = Ember.ObjectController.extend({
+  actions: {
+    updateEvent: function (issue, data) {
+      var event_name = this.get('event_name');
+      var description = this.get('description');
+      var location = this.get('location');
+      var contact_name = this.get('contact_name');
+      var contact_info = this.get('contact_info');
+      
+
+      var event = this.get('model');
+      event.set('event_name', event_name);
+      event.set('description', description);
+      event.set('location', location);
+      event.set('contact_name', contact_name);
+      event.set('contact_info', contact_info);
+
+      event.save(); 
+     
+      this.transitionTo('issue.summary');
+    },
+  }
+});
+
+App.VideosController = Ember.ArrayController.extend({
+});
+
+
+
+
+App.VideoController = Ember.ObjectController.extend({
+  actions: {
+    updateVideo: function (issue, data) {
+      var embedded_video_id = this.get('embedded_video_id');
+      var title = this.get('title');
+      var caption = this.get('caption');
+     
+      var video = this.get('model');
+      video.set('embedded_video_id', embedded_video_id);
+      video.set('title', title);
+      video.set('caption', caption);
+
+      video.save(); 
+     
+      this.transitionToRoute('issue.summary');
+    },
+  }
 });
 
 
@@ -268,9 +401,7 @@ App.PostController = Ember.ArrayController.extend({
   sortAscending: true
 });
 
-
-
-App.IssueView = Ember.View.extend({
+App.IssueSummaryView = Ember.View.extend({
   sortProperties: ['position'],
 
   didInsertElement: function() {
@@ -294,8 +425,35 @@ App.IssueView = Ember.View.extend({
 
 
 
+App.ArticleView = Ember.View.extend({
+  didInsertElement: function() {
+    $(".centered").hide();
+  },
+  willDestroyElement: function() {
+    $(".centered").show();
+  },
 
+});
 
+App.EventView = Ember.View.extend({
+  didInsertElement: function() {
+    $(".centered").hide();
+  },
+  willDestroyElement: function() {
+    $(".centered").show();
+  },
+
+});
+
+App.VideoView = Ember.View.extend({
+  didInsertElement: function() {
+    $(".centered").hide();
+  },
+  willDestroyElement: function() {
+    $(".centered").show();
+  },
+
+});
 
 App.Organization = DS.Model.extend({
   name: DS.attr('string'),
@@ -318,7 +476,8 @@ App.Article = DS.Model.extend({
   author: DS.attr('string'),
   title: DS.attr('string'),
   body: DS.attr('string'),
-  post: DS.belongsTo('post')
+  top_image: DS.attr('string'),
+  post: DS.belongsTo('post'),
 });
 
 App.Event = DS.Model.extend({
@@ -333,7 +492,7 @@ App.Event = DS.Model.extend({
 App.Video = DS.Model.extend({
   title: DS.attr('string'),
   caption: DS.attr('string'),
-  video_id: DS.attr('string'),
+  embedded_video_id: DS.attr('string'),
   post: DS.belongsTo('post')
 });
 
@@ -367,18 +526,8 @@ App.Newsletter.FIXTURES = [{
  }];
 
  App.Issue.FIXTURES = [{
-      id: 1,
-      draft_name: "draft_name"
- }, 
-
- {
-      id: 2,
-      draft_name: "Another issuename"
- },
-
- {
-      id: 3,
-      draft_name: "Draft #3"
+   id:1,
+   draft_name: "issue #1"
  }
  ];
 

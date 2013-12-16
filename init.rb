@@ -1,18 +1,19 @@
 require 'rubygems'
+require 'bundler/setup'
 require 'sinatra/base'
-require 'mini_magick'
-require 'fog'
-require 'carrierwave'
-require 'carrierwave/datamapper'
+require 'data_mapper'
 require 'mustache/sinatra'
 require 'haml'
 require 'bundler/setup'
 require 'pry'
 require 'pry-doc'
-require 'data_mapper'
 require 'pg'
 require 'dm-postgres-adapter'
 require "dm-noisy-failures"
+require 'carrierwave'
+require 'carrierwave/datamapper'
+require 'mini_magick'
+require 'fog'
 
 
 # Bundler Setup.
@@ -30,6 +31,8 @@ end
 
 
 
+
+
 ENV['RACK_ENV'] = 'development'
 config = YAML.load_file('config/database.yml')
 DataMapper.setup(:default, config[ENV['RACK_ENV']])
@@ -42,19 +45,16 @@ bucket = config['development']['file_access_directory']
 
 
 CarrierWave.configure do |config|
+	config.storage = :fog
   config.fog_credentials = {
     :provider               => 'AWS',                 
     :aws_access_key_id      => access_key_id,
     :aws_secret_access_key  => secret_access_key,                      
-    :region                 => region           
+    :region                 => 'us-west-2'          
   }
   config.fog_directory  = bucket
 end
 
-puts config['development']['file_access_key']
-puts config['development']['file_access_secret']
-puts config['development']['file_access_region']
-puts config['development']['file_access_directory']
 
 # require 'rubygems'
 # require 'sinatra/base'

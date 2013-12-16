@@ -6,15 +6,22 @@
   
   <script src="js/libs/jquery-1.9.1.js"></script>
   <script src="js/libs/jquery-ui-1.10.3.js"></script>
+  <script src="js/libs/jquery.form.js"></script>
   <script src="js/libs/galleria-1.3.3.min.js"></script>
   <link rel="stylesheet" href="css/normalize.css"></link>
   <link rel="stylesheet" href="css/jquery-ui-1.10.3.min.css"></link>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="css/font-awesome.min.css"></link>
   <script src="js/libs/themes/classic/galleria.classic.min.js"></script>
   <link rel="stylesheet" href="css/style.css"> 
+
   <style>
     .galleria{ width: 750px; height: 400px; background: #000; margin: auto; }
   </style>
+
+
+   
+
   
 </head>
 <body>
@@ -62,8 +69,17 @@
 
         <li class="borderline">{{partial 'newsletter_title'}}</li>
         <li class="borderline">{{partial 'newsletter_subtitle'}}</li>
-        <li class="borderline"><button {{ action 'createNewIssue' }} id="my_new_issue_button" class="btn btn-link">Create a New Issue</button></li>
 
+        <div class="issue_creation_container">
+          <a href="#" {{ action 'triggerNewIssuePopover' }}>Create a New Issue</a>
+    
+     
+         
+
+
+
+
+        <br />
         <br />
 
         <li class="borderline">{{#link-to 'index'}}Issues{{/link-to}}</li>
@@ -86,13 +102,31 @@
     </div>
   </div>
 
+   <!--Popover Form for New Issues-->
+          <div id="create_new_issue_popover" class="popover right popover-example hide">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover right</h3>
+            <div class="popover-content">
+            <form class="form-horizontal article_form">
+               
+
+              <div class="form-group">
+                <label for="draft_name" class="col-sm-3">Issue name</label>
+                <div class="col-sm-9">
+                  {{input type="text" class="form-control" id="draft_name" placeholder="Enter an issue name" value=draft_name}}
+                  <button class="btn btn-default" data-dismiss="modal" {{action "createNewIssue"}}>Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--End of Popover Form for New Issues-->
+
 
   </script>
 
 
-  <script type="text/x-handlebars" id="articles">
-    articles
-  </script>
 
   <script type="text/x-handlebars" id="_issues">
      
@@ -120,7 +154,7 @@
           {{/if}}
       </small>
     </p>
-  
+    
     <button data-toggle="modal" data-target="#add_article">
         Add Article
     </button>
@@ -133,7 +167,7 @@
         Add Video
     </button>
 
-    <button {{ action 'startGalleria' }} data-toggle="modal" data-target="#preview">
+    <button {{ action 'prepareModal' }} data-toggle="modal" data-target="#preview">
         Preview
     </button>
       
@@ -164,8 +198,12 @@
         <div class="modal-body">
           {{#each post in controllers.issue.posts}}
             {{#if post.article}}
-              <div class="article_div">
+              <div class="top_image_div">
                 <h1>{{post.article.title}}</h1>
+                <img {{bind-attr src=post.article.top_image}} alt="Logo">
+              </div>
+              <div class="article_div">
+                
                 <h4>{{post.article.author}}</h4>
                 <div class="content_div">
                   <p>{{post.article.body}}</p>
@@ -181,12 +219,17 @@
               </div>
             {{/if}}
             {{#if post.video}}
+
             <h1>{{post.video.title}}</h1>
-            <div class="video_wrapper">
-            <iframe margin="auto" width="560" height="315" src="{{unbound post.video.video_id}}" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <p>{{post.video.caption}}</p>
+              
+              <div class="video_embed"><embed wmode="transparent" id="player" type="text/html" width="640" height="390"
+  src={{unbound post.video.embedded_video_id}} 
+  frameborder="0"></embed></p>
+        
+            <p>{{post.video.caption}}</div>
             {{/if}}
+
+
 
 
           {{/each}} 
@@ -207,8 +250,10 @@
   </div><!-- /.modal -->
 
 
+
   <!-- Modal -->
   <div class="modal fade" id="add_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -216,11 +261,11 @@
           <h1 class="modal-title" id="myModalLabel">Adding an Article</h4>
         </div>
 
-        <form class="form-horizontal article_form">
+        <form id="article_form" name="article_form" class="form-horizontal article_form" enctype="multipart/form-data" method="post" action="/upload">
           <div class="form-group">
             <label for="article_title" class="col-sm-2">Title</label>
             <div class="col-sm-10">
-              {{input type="text" class="form-control" id="article_title" placeholder="Enter your article title" value=article_title}}
+              {{input type="text" class="form-control" id="article_title" placeholder="Enter your article title" value=title}}
             </div>
           </div>
 
@@ -232,23 +277,29 @@
           </div>
 
           <div class="form-group">
-            <label for="article_text" class="col-sm-2">Body Text</label>
+            <label for="article_text" class="editable col-sm-2">Body Text</label>
             <div class="col-sm-10">
-            {{ textarea class="form-control" rows="5" id="article_text" placeholder="Enter the text of your article here" value=article_text}}
+            {{ textarea class="form-control editable" rows="5" id="article_text" placeholder="Enter the text of your article here" value=body}}
             </div>
           </div>
+    
 
           <div class="form-group">
             <label for="image_asset" class="col-sm-2">File input</label>
             <div class="col-sm-10">
-            <input type="file" id="image_asset">
+            <input type="file" id="top_image" name="top_image">
             
             <p class="help-block">Upload an image to go with your article here.</p>
             </div>
           </div>
-
-          <button class="btn btn-default" data-dismiss="modal" {{action "createNewArticle" this}}>Submit</button>
+          
+         
+            <button {{action "uploadImage" this}} type="button" class="btn btn-default">Submit</button>
         </form>
+
+
+
+
         
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -257,6 +308,8 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+
 
 
   <!-- Modal -->
@@ -309,9 +362,6 @@
               </div>
             </div>
           </div>
-
-
-
 
           <div class="form-group">
             <label for="contact_email" class="col-sm-3">Contact Info</label>
@@ -453,46 +503,202 @@
   </span>
 </script>
 
+<script type="text/x-handlebars" id="articles">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="article">
+  <h1 class="form_heading">Editing Your Article</h1>
+  <form id="article_edit_form" name="article_form" class="form-horizontal article_form" enctype="multipart/form-data" method="post" action="/upload">
+      <div class="form-group">
+        <label for="article_title" class="col-sm-2">Title</label>
+        <div class="col-sm-10">
+          {{input type="text" class="form-control" id="edit_article_title" placeholder="Enter your article title" value=title}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="author" class="col-sm-2">Author</label>
+        <div class="col-sm-10">
+          {{input type="text" class="form-control" id="edit_author" placeholder="Enter the name of the article's author" value=author}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="article_text" class="editable col-sm-2">Body Text</label>
+        <div class="col-sm-10">
+        {{ textarea class="form-control editable" rows="5" id="edit_article_text" placeholder="Enter the text of your article here" value=body}}
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="image_asset" class="col-sm-2">File input</label>
+        <div class="col-sm-10">
+        <input type="file" id="edit_top_image" name="top_image">
+        
+        <p class="help-block">Upload an image to go with your article here.</p>
+        </div>
+      </div>
+
+      <button {{action "updateArticle"}} type="button" class="btn btn-default">Submit</button>
+    </form>
+</script>
+
+<script type="text/x-handlebars" id="events">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="event"> 
+  <h1 class="form_heading">Editing Your Event</h1> 
+  <form class="form-horizontal article_form">
+    <div class="form-group">
+      <label for="event_name" class="col-sm-3">Name</label>
+      <div class="col-sm-9">
+        {{input type="text" class="form-control" id="edit_event_name" placeholder="Enter your event's name" value=event_name}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="col-sm-3">Description</label>
+      <div class="col-sm-9">
+        {{input type="textarea" class="form-control" id="edit_description" placeholder="Enter your description" value=description}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="location" class="col-sm-3">Location</label>
+      <div class="col-sm-9">
+        {{input type="text" class="form-control" id="edit_location" placeholder="Enter the location of this event" value=location}}
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label for="contact_name" class="col-sm-3">Contact</label>
+      <div class="col-sm-9">
+        {{input type="text" class="form-control" id="edit_contact_name" placeholder="Enter the name of the contact person for this event" value=contact_name}}
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="contact_name" class="col-sm-3">Dates of Event</label>
+      <div class="col-sm-9">
+        <div class="col-sm-6">
+        {{input type="text" class="form-control" id="edit_begin_date_datepicker" placeholder="Enter event's date" value=event_start_date}}
+        </div>
+        <div class="col-sm-6">
+        {{input type="text" class="form-control" id="edit_end_date_datepicker" placeholder="Enter event's end date (if applicable)" value=event_end_date}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contact_email" class="col-sm-3">Contact Info</label>
+      <div class="col-sm-9">
+      {{input type="text" class="form-control" id="edit_contact_info" placeholder="Enter the contact person's email or phone number" value=contact_info}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="image_asset" class="col-sm-3">File input</label>
+      <div class="col-sm-9">
+      {{input type="file" class="form-control" id="edit_event_image"}}
+      
+      <p class="help-block">Upload an image to go with your event here.</p>
+      </div>
+    </div>
+
+    <button class="btn btn-default" data-dismiss="modal" {{action "updateEvent"}}>Submit</button>
+  </form>
+</script>
+
+<script type="text/x-handlebars" id="videos">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="video">
+  <div id="editing_div">
+  <h1 class="form_heading">Editing Your Video</h1>
+  <form class="form-horizontal article_form">
+    <div class="form-group">
+      <label for="title" class="col-sm-3">Title</label>
+      <div class="col-sm-9">
+        {{input type="text" class="form-control" id="edit_title" placeholder="Enter a title or heading for your video" value=title}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="caption" class="col-sm-3">Caption</label>
+      <div class="col-sm-9">
+        {{input type="text" class="form-control" id="edit_caption" placeholder="Enter a caption for your video" value=caption}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="video_id" class="col-sm-3">Video ID</label>
+      <div class="col-sm-9">
+        {{input type="text" class="form-control" id="edit_embedded_video_id" placeholder="Enter the id of your YouTube video" value=embedded_video_id}}
+      </div>
+    </div>
+
+   <button class="btn btn-default" data-dismiss="modal" {{action "updateVideo"}}>Submit</button>
+  </form>
+  </div>
+</script>
+
+
+
+          
+
 <script type="text/x-handlebars" id="issue/summary">
-
-  
-  <form name="form1" method="post" enctype="multipart/form-data" action="/upload">
-    <div>
-        <label for="caption">Image Caption</label>
-        <input name="caption" type="text" />
-    </div>
-    <div>
-        <label for="image1">Image File</label>
-        <input name="top_image" type="file" />
-    </div>
-    <div>
-        <input type="submit" value="Submit" />
-    </div>
-</form>
-
-
   <div>
        <ul class="sortable list_with_no_style">
       <li>Newsletter Title: {{controllers.newsletter.title}}</li>
       <li>Newsletter Subtitle: {{controllers.newsletter.subtitle}}</li>
 
+
+      
+
+
       {{#each post in controllers.issue.posts}}
        
         {{#if post.article}}
-        <li class="post" data-id={{unbound post.id}}>{{post.position}}: {{post.article.title}}</li>
+          
+          <li class="post" data-id={{unbound post.id}}>
+            {{post.position}}: {{post.article.title}}
+            {{#link-to 'article' post.article}}Edit{{/link-to}}
+          </li>
+
         {{/if}}
+
         {{#if post.event}}
-        <li class="post" data-id={{unbound post.id}}>{{post.position}}: {{post.event.event_name}}</li>
+
+          <li class="post" data-id={{unbound post.id}}>
+            {{post.position}}: {{post.event.event_name}}
+            {{#link-to 'event' post.event}}Edit{{/link-to}}
+          </li>
+
         {{/if}}
+
         {{#if post.video}}
-        <li class="post" data-id={{unbound post.id}}>{{post.position}}: {{post.video.title}}</li>
+        
+          <li class="post" data-id={{unbound post.id}}>
+            {{post.position}}: {{post.video.title}}
+            {{#link-to 'video' post.video}}Edit{{/link-to}}
+          </li>
+
         {{/if}}
+
       {{/each}}
     </ul>
   </div>
 </script>
   
 <!ember/app dependencies below />
+
+
+
 
 <script src="js/libs/handlebars-1.0.0.js"></script>
 <script src="js/libs/ember-1.2.0.js"></script>
@@ -501,7 +707,10 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+
 <script src="js/app.js"></script>
+
+
 
 
 </body>

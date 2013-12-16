@@ -12,6 +12,7 @@ class Event
   	property :event_start_date,     Date
   	property :event_end_date,       Date
   	property :expire_on,            Date
+    mount_uploader :event_image, ImageUploader
   # 
     has n, :posts, :constraint => :destroy  
     has n, :issues, :model => 'Issue', :child_key => [:id], :parent_key => [:issue_id], :through => :posts

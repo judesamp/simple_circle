@@ -1741,3 +1741,57 @@ FATAL:  database files are incompatible with server
 DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
 FATAL:  database files are incompatible with server
 DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.2.
+LOG:  database system was interrupted; last known up at 2013-12-09 23:23:12 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  redo starts at 0/183E310
+LOG:  record with zero length at 0/183E350
+LOG:  redo done at 0/183E310
+LOG:  last completed transaction was at log time 2013-12-09 23:23:12.569683-05
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131209-2808-odshys>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131209-2847-yhrnm4>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131209-3124-5mylzg>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131209-3157-1xmbqht>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131209-3284-146h3d0>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131210-3320-1hywf8s>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+FATAL:  terminating connection due to administrator command
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-12-10 00:11:17 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131210-593-15ylldg>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+ERROR:  value too long for type character varying(255)
+STATEMENT:  INSERT INTO "articles" ("issue_id", "title", "top_image") VALUES (1, 'My title', '{:filename=>"LOTR_book_Covers.jpg", :type=>"image/jpeg", :name=>"top_image", :tempfile=>#<Tempfile:/var/folders/sr/yfpdvs8d2dj0wg853174ynyr0000gn/T/RackMultipart20131210-627-1d3t4qg>, :head=>"Content-Disposition: form-data; name=\"top_image\"; filename=\"LOTR_book_Covers.jpg\"\r\nContent-Type: image/jpeg\r\n"}') RETURNING "id"
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 569) running in data directory "/usr/local/var/postgres"?
+LOG:  database system was interrupted; last known up at 2013-12-12 19:11:48 EST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  record with zero length at 0/18A5E10
+LOG:  redo is not required
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-12-15 22:13:43 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2013-12-16 11:07:31 EST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

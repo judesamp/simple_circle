@@ -3,6 +3,19 @@ html, body {
    height: 100%;
 }
 
+#video_embed {
+	overflow: auto; 
+	-webkit-overflow-scrolling: touch;
+}
+
+#create_new_issue_popover {
+		display:block;
+    position: fixed;
+    width: 300px;
+    left: 161px;
+    top: 90px;
+}
+
 .side_nav {
 	margin: 50px 0 0 0;
 	padding: 10px 0 0 0;
@@ -29,7 +42,7 @@ html, body {
 }
 
 .content_box {
-	padding-top: 75px;
+	padding-top: 50px;
 	font-size: 150%;
 	line-height: 150%;
 	text-align: left;
@@ -104,18 +117,31 @@ input.my_input_size {
 .event_div {
 	text-align: left;
 }
+
+.form_heading {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
 /* Large desktop */
 @media (max-width: 1100px) {
 	
 
-	.side_nav {
-	margin: 0;
-	padding: 10px 0 0 0;
-	float:right;
-	height: 100%;
-	width: 300px;
-	background-color: #f8f8f8;
-	border-right: 1px solid #e7e7e7;
+.side_nav {
+margin: 50px 0 0 0;
+padding: 10px 0 0 0;
+float:right;
+height: 100%;
+width: 300px;
+background-color: #f8f8f8;
+border-right: 1px solid #e7e7e7;
 }
 
 .workspace {

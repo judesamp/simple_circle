@@ -11,19 +11,23 @@ module Implementation
         
         
     post '/upload' do
-      puts params[:file]
+      puts request.body.read
 
        begin
         article = Article.new(:issue_id => 1, :title => "My title")
         article.top_image = params[:top_image]
+        article.middle_image = params[:middle_image]
+        article.bottom_image = params[:bottom_image]
         article.save
-        puts article.to_json
+  
+
+        article.to_json
       rescue DataMapper::SaveFailureError => e
         return e.message
       end
       
     end
-    
+  
     
     ##temporary_for_testing_purposes
     get '/organizations' do
