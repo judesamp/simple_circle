@@ -4,7 +4,6 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Router.map(function() {
   this.resource('issues', function() {
-    this.route('create');
     this.resource('issue', {path: ":issue_id"}, function() {
         this.resource('articles', function() {
           this.resource('article', {path: ":article_id"});
@@ -18,21 +17,18 @@ App.Router.map(function() {
           this.resource('video', {path: ":video_id"});
         });
 
+        this.route('summary');
         this.route('edit_issue_name');
         this.route('add_article');
         this.route('add_event');
         this.route('preview');
-        this.route('summary');
     });
   });
 });
 
 App.ApplicationRoute = Ember.Route.extend({
-  ready: function () {
-        
-  },
   setupController: function(controller,model) {
-        controller.set('model', model);//UsersEditController
+        controller.set('model', model);
         this.controllerFor('newsletter').set('model',this.store.find('newsletter', 1));
         this.controllerFor('issues').set('model',this.store.find('issue'));
   },
@@ -58,17 +54,15 @@ App.IssuesRoute = Ember.Route.extend({
 
 App.IssueRoute = Ember.Route.extend({
   setupController: function(controller,model) {
-        this._super(controller,model);
         controller.set('model', model);
+        this.controllerFor('post').set('model', this.store.find('post'));
         this.controllerFor('article').set('model',this.store.find('article'));
         this.controllerFor('event').set('model',this.store.find('event'));
         this.controllerFor('video').set('model',this.store.find('video'));
-        this.controllerFor('post').get('model');
-
   },
 
   model: function(params) {
-    return issues.findBy('id', params.issue_id);
+    return this.store.findBy('id', params.issue_id);
   }
 });
 
@@ -235,7 +229,12 @@ App.IssueController = Ember.ObjectController.extend({
         issue: issue
       });
       post.save();
-    
+
+      var store = this.store;
+
+      
+     
+
       var event = this.store.createRecord('event', {
         top_image: top_image,
         event_name: event_name,
@@ -246,13 +245,15 @@ App.IssueController = Ember.ObjectController.extend({
         post: post
       });
 
+      event.save(); 
+
       this.set('event_name', '');
       this.set('description', '');
       this.set('location', '');
       this.set('contact_name', '');
       this.set('contact_info', '');
 
-      event.save();  
+      
     },
 
     createNewArticle: function (issue, data) {
@@ -287,8 +288,6 @@ App.IssueController = Ember.ObjectController.extend({
     
   },
 
- 
-
   posts: (function() {
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       content: this.get('content.posts'),
@@ -307,9 +306,6 @@ App.IssueController = Ember.ObjectController.extend({
   }
 });
 
-App.IssueSummaryController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issue", "article", "post", "video"],
-});
 
 App.NewsletterController = Ember.ObjectController.extend({
 });
@@ -337,7 +333,7 @@ App.ArticleController = Ember.ObjectController.extend({
 
       article.save(); 
       
-      this.transitionToRoute('issue.summary');
+      this.transitionToRoute('issue');
     },
   }
 });
@@ -365,7 +361,7 @@ App.EventController = Ember.ObjectController.extend({
 
       event.save(); 
      
-      this.transitionTo('issue.summary');
+      this.transitionTo('issue');
     },
   }
 });
@@ -390,7 +386,7 @@ App.VideoController = Ember.ObjectController.extend({
 
       video.save(); 
      
-      this.transitionToRoute('issue.summary');
+      this.transitionToRoute('issue');
     },
   }
 });
@@ -401,7 +397,7 @@ App.PostController = Ember.ArrayController.extend({
   sortAscending: true
 });
 
-App.IssueSummaryView = Ember.View.extend({
+App.IssueView = Ember.View.extend({
   sortProperties: ['position'],
 
   didInsertElement: function() {
@@ -428,9 +424,12 @@ App.IssueSummaryView = Ember.View.extend({
 App.ArticleView = Ember.View.extend({
   didInsertElement: function() {
     $(".centered").hide();
+    $(".summary").hide();
+    
   },
   willDestroyElement: function() {
     $(".centered").show();
+    $(".summary").show();
   },
 
 });
@@ -438,9 +437,11 @@ App.ArticleView = Ember.View.extend({
 App.EventView = Ember.View.extend({
   didInsertElement: function() {
     $(".centered").hide();
+    $(".summary").hide();
   },
   willDestroyElement: function() {
     $(".centered").show();
+    $(".summary").show();
   },
 
 });
@@ -448,9 +449,11 @@ App.EventView = Ember.View.extend({
 App.VideoView = Ember.View.extend({
   didInsertElement: function() {
     $(".centered").hide();
+    $(".summary").hide();
   },
   willDestroyElement: function() {
     $(".centered").show();
+    $(".summary").show();
   },
 
 });

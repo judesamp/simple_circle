@@ -132,307 +132,312 @@
      
     {{#each controllers.issues}}
       <div class="row">
-        <div class="col-xs-8 col-md-8">{{#link-to 'issue.summary' this}} {{draft_name}} {{/link-to}}</div>
+        <div class="col-xs-8 col-md-8">{{#link-to 'issue.index' this}} {{draft_name}} {{/link-to}}</div>
           <div class="glyphicon glyphicon-list-alt col-xs-2 col-md-1"></div>
         </div>
       </div>
     {{/each}} 
   </script>
 
+<script type="text/x-handlebars" id="issues">
+  {{outlet}}    
+</script>
+
 <script type="text/x-handlebars" id="issue">
-  <div class="centered">
-    <p>
-      <small>
-        You are working on an issue named: 
-          {{#if isEditingIssueName}}
-            {{partial 'issue_name/edit'}}
-          {{else}}
-            <strong>{{draft_name}}</strong> 
-            <button {{action 'editIssueName'}} class="btn-xs btn-link">
-              <span class="glyphicon glyphicon-edit"></span>
-            </button>
-          {{/if}}
-      </small>
-    </p>
-    
-    <button data-toggle="modal" data-target="#add_article">
-        Add Article
-    </button>
-
-    <button {{ action 'startDatepicking' }} data-toggle="modal" data-target="#add_event">
-        Add Event
-    </button>
-
-    <button data-toggle="modal" data-target="#add_video">
-        Add Video
-    </button>
-
-    <button {{ action 'prepareModal' }} data-toggle="modal" data-target="#preview">
-        Preview
-    </button>
+    <div class="centered">
+      <p>
+        <small>
+          You are working on an issue named: 
+            {{#if isEditingIssueName}}
+              {{partial 'issue_name/edit'}}
+            {{else}}
+              <strong>{{draft_name}}</strong> 
+              <button {{action 'editIssueName'}} class="btn-xs btn-link">
+                <span class="glyphicon glyphicon-edit"></span>
+              </button>
+            {{/if}}
+        </small>
+      </p>
       
-    <br />
-    <hr class="nav_rule">
-  </div>
-  
-  {{outlet}}
+      <button data-toggle="modal" data-target="#add_article">
+          Add Article
+      </button>
+
+      <button {{ action 'startDatepicking' }} data-toggle="modal" data-target="#add_event">
+          Add Event
+      </button>
+
+      <button data-toggle="modal" data-target="#add_video">
+          Add Video
+      </button>
+
+      <button {{ action 'prepareModal' }} data-toggle="modal" data-target="#preview">
+          Preview
+      </button>
+        
+      <br />
+      <hr class="nav_rule">
+    </div>
+    
+
+    {{partial 'issue/summary'}}
 
 
 
 
-<!-- Modal -->
-  <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h1 class="modal-title" id="myModalLabel">{{controllers.newsletter.title}}</h4>
-          <h4 class="modal-title" id="myModalLabel">{{controllers.newsletter.subtitle}}</h4>
-        </div>
+  <!-- Modal -->
+    <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="modal-title" id="myModalLabel">{{controllers.newsletter.title}}</h4>
+            <h4 class="modal-title" id="myModalLabel">{{controllers.newsletter.subtitle}}</h4>
+          </div>
+
+
+    
 
 
 
+          <div class="modal-body">
+            {{#each post in issue.posts}}
+              {{#if post.article}}
+                <div class="top_image_div">
+                  <h1>{{post.article.title}}</h1>
+                  <img {{bind-attr src=post.article.top_image}} alt="Logo">
+                </div>
+                <div class="article_div">
+                  
+                  <h4>{{post.article.author}}</h4>
+                  <div class="content_div">
+                    <p>{{post.article.body}}</p>
+                  </div>
+                </div>
+              {{/if}}
+              {{#if post.event}}
+                <div class="event_div">
+                <h1>{{post.event.event_name}}</h1>
+                <img src="{{unbound post.event.top_image}}" />
+                <h4>{{post.event.description}}</h4>
+                <p>{{post.event.location}}</p>
+                </div>
+              {{/if}}
+              {{#if post.video}}
 
-
-
-        <div class="modal-body">
-          {{#each post in controllers.issue.posts}}
-            {{#if post.article}}
-              <div class="top_image_div">
-                <h1>{{post.article.title}}</h1>
-                <img {{bind-attr src=post.article.top_image}} alt="Logo">
-              </div>
-              <div class="article_div">
+              <h1>{{post.video.title}}</h1>
                 
-                <h4>{{post.article.author}}</h4>
-                <div class="content_div">
-                  <p>{{post.article.body}}</p>
+                <div class="video_embed"><embed wmode="transparent" id="player" type="text/html" width="640" height="390"
+    src={{unbound post.video.embedded_video_id}} 
+    frameborder="0"></embed></p>
+          
+              <p>{{post.video.caption}}</div>
+              {{/if}}
+
+
+
+
+            {{/each}} 
+          </div>
+
+          <div class="galleria">
+            <img src="http://www.spaceforaname.com/galleryview/img/photos/bp1.jpg">
+            <img src="http://www.spaceforaname.com/galleryview/img/photos/bp2.jpg">
+            <img src="http://www.spaceforaname.com/galleryview/img/photos/bp4.jpg">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Publish</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="add_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="modal-title" id="myModalLabel">Adding an Article</h4>
+          </div>
+
+          <form id="article_form" name="article_form" class="form-horizontal article_form" enctype="multipart/form-data" method="post" action="/upload">
+            <div class="form-group">
+              <label for="article_title" class="col-sm-2">Title</label>
+              <div class="col-sm-10">
+                {{input type="text" class="form-control" id="article_title" placeholder="Enter your article title" value=title}}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="author" class="col-sm-2">Author</label>
+              <div class="col-sm-10">
+                {{input type="text" class="form-control" id="author" placeholder="Enter the name of the article's author" value=author}}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="article_text" class="editable col-sm-2">Body Text</label>
+              <div class="col-sm-10">
+              {{ textarea class="form-control editable" rows="5" id="article_text" placeholder="Enter the text of your article here" value=body}}
+              </div>
+            </div>
+      
+
+            <div class="form-group">
+              <label for="image_asset" class="col-sm-2">File input</label>
+              <div class="col-sm-10">
+              <input type="file" id="top_image" name="top_image">
+              
+              <p class="help-block">Upload an image to go with your article here.</p>
+              </div>
+            </div>
+            
+           
+              <button {{action "uploadImage" this}} type="button" class="btn btn-default">Submit</button>
+          </form>
+
+
+
+
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Publish</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="add_event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="modal-title" id="myModalLabel">Adding an Event</h4>
+          </div>
+
+          <form class="form-horizontal article_form">
+            <div class="form-group">
+              <label for="event_name" class="col-sm-3">Name</label>
+              <div class="col-sm-9">
+                {{input type="text" class="form-control" id="event_name" placeholder="Enter your event's name" value=event_name}}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description" class="col-sm-3">Description</label>
+              <div class="col-sm-9">
+                {{input type="textarea" class="form-control" id="description" placeholder="Enter your description" value=description}}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="location" class="col-sm-3">Location</label>
+              <div class="col-sm-9">
+                {{input type="text" class="form-control" id="location" placeholder="Enter the location of this event" value=location}}
+              </div>
+            </div>
+
+             <div class="form-group">
+              <label for="contact_name" class="col-sm-3">Contact</label>
+              <div class="col-sm-9">
+                {{input type="text" class="form-control" id="contact_name" placeholder="Enter the name of the contact person for this event" value=contact_name}}
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="contact_name" class="col-sm-3">Dates of Event</label>
+              <div class="col-sm-9">
+                <div class="col-sm-6">
+                {{input type="text" class="form-control" id="begin_date_datepicker" placeholder="Enter event's date" value=event_start_date}}
+                </div>
+                <div class="col-sm-6">
+                {{input type="text" class="form-control" id="end_date_datepicker" placeholder="Enter event's end date (if applicable)" value=event_end_date}}
                 </div>
               </div>
-            {{/if}}
-            {{#if post.event}}
-              <div class="event_div">
-              <h1>{{post.event.event_name}}</h1>
-              <img src="{{unbound post.event.top_image}}" />
-              <h4>{{post.event.description}}</h4>
-              <p>{{post.event.location}}</p>
-              </div>
-            {{/if}}
-            {{#if post.video}}
+            </div>
 
-            <h1>{{post.video.title}}</h1>
+            <div class="form-group">
+              <label for="contact_email" class="col-sm-3">Contact Info</label>
+              <div class="col-sm-9">
+              {{input type="text" class="form-control" id="contact_info" placeholder="Enter the contact person's email or phone number" value=contact_info}}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="image_asset" class="col-sm-3">File input</label>
+              <div class="col-sm-9">
+              {{input type="file" class="form-control" id="top_image"}}
               
-              <div class="video_embed"><embed wmode="transparent" id="player" type="text/html" width="640" height="390"
-  src={{unbound post.video.embedded_video_id}} 
-  frameborder="0"></embed></p>
-        
-            <p>{{post.video.caption}}</div>
-            {{/if}}
+              <p class="help-block">Upload an image to go with your event here.</p>
+              </div>
+            </div>
 
-
-
-
-          {{/each}} 
-        </div>
-
-        <div class="galleria">
-          <img src="http://www.spaceforaname.com/galleryview/img/photos/bp1.jpg">
-          <img src="http://www.spaceforaname.com/galleryview/img/photos/bp2.jpg">
-          <img src="http://www.spaceforaname.com/galleryview/img/photos/bp4.jpg">
-        </div>
+          <button class="btn btn-default" data-dismiss="modal" {{action "createNewEvent" this}}>Submit</button>
+        </form>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Publish</button>
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="add_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h1 class="modal-title" id="myModalLabel">Adding an Article</h4>
-        </div>
-
-        <form id="article_form" name="article_form" class="form-horizontal article_form" enctype="multipart/form-data" method="post" action="/upload">
-          <div class="form-group">
-            <label for="article_title" class="col-sm-2">Title</label>
-            <div class="col-sm-10">
-              {{input type="text" class="form-control" id="article_title" placeholder="Enter your article title" value=title}}
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="add_video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="modal-title" id="myModalLabel">Adding a Video</h4>
           </div>
 
-          <div class="form-group">
-            <label for="author" class="col-sm-2">Author</label>
-            <div class="col-sm-10">
-              {{input type="text" class="form-control" id="author" placeholder="Enter the name of the article's author" value=author}}
+           <form class="form-horizontal article_form">
+            <div class="form-group">
+              <label for="title" class="col-sm-3">Title</label>
+              <div class="col-sm-9">
+                {{input type="text" class="form-control" id="title" placeholder="Enter a title or heading for your video" value=title}}
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="article_text" class="editable col-sm-2">Body Text</label>
-            <div class="col-sm-10">
-            {{ textarea class="form-control editable" rows="5" id="article_text" placeholder="Enter the text of your article here" value=body}}
+            <div class="form-group">
+              <label for="caption" class="col-sm-3">Caption</label>
+              <div class="col-sm-9">
+                {{input type="text" class="form-control" id="caption" placeholder="Enter a caption for your video" value=caption}}
+              </div>
             </div>
-          </div>
-    
 
-          <div class="form-group">
-            <label for="image_asset" class="col-sm-2">File input</label>
-            <div class="col-sm-10">
-            <input type="file" id="top_image" name="top_image">
-            
-            <p class="help-block">Upload an image to go with your article here.</p>
+            <div class="form-group">
+              <label for="video_id" class="col-sm-3">Video ID</label>
+              <div class="col-sm-9">
+                {{input type="text" class="form-control" id="video_id" placeholder="Enter the id of your YouTube video" value=video_id}}
+              </div>
             </div>
-          </div>
+
+           <button class="btn btn-default" data-dismiss="modal" {{action "createNewVideo" this}}>Submit</button>
+          </form>
           
-         
-            <button {{action "uploadImage" this}} type="button" class="btn btn-default">Submit</button>
-        </form>
-
-
-
-
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Publish</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="add_event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h1 class="modal-title" id="myModalLabel">Adding an Event</h4>
-        </div>
-
-        <form class="form-horizontal article_form">
-          <div class="form-group">
-            <label for="event_name" class="col-sm-3">Name</label>
-            <div class="col-sm-9">
-              {{input type="text" class="form-control" id="event_name" placeholder="Enter your event's name" value=event_name}}
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Publish</button>
           </div>
-
-          <div class="form-group">
-            <label for="description" class="col-sm-3">Description</label>
-            <div class="col-sm-9">
-              {{input type="textarea" class="form-control" id="description" placeholder="Enter your description" value=description}}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="location" class="col-sm-3">Location</label>
-            <div class="col-sm-9">
-              {{input type="text" class="form-control" id="location" placeholder="Enter the location of this event" value=location}}
-            </div>
-          </div>
-
-           <div class="form-group">
-            <label for="contact_name" class="col-sm-3">Contact</label>
-            <div class="col-sm-9">
-              {{input type="text" class="form-control" id="contact_name" placeholder="Enter the name of the contact person for this event" value=contact_name}}
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="contact_name" class="col-sm-3">Dates of Event</label>
-            <div class="col-sm-9">
-              <div class="col-sm-6">
-              {{input type="text" class="form-control" id="begin_date_datepicker" placeholder="Enter event's date" value=event_start_date}}
-              </div>
-              <div class="col-sm-6">
-              {{input type="text" class="form-control" id="end_date_datepicker" placeholder="Enter event's end date (if applicable)" value=event_end_date}}
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="contact_email" class="col-sm-3">Contact Info</label>
-            <div class="col-sm-9">
-            {{input type="text" class="form-control" id="contact_info" placeholder="Enter the contact person's email or phone number" value=contact_info}}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="image_asset" class="col-sm-3">File input</label>
-            <div class="col-sm-9">
-            {{input type="file" class="form-control" id="top_image"}}
-            
-            <p class="help-block">Upload an image to go with your event here.</p>
-            </div>
-          </div>
-
-        <button class="btn btn-default" data-dismiss="modal" {{action "createNewEvent" this}}>Submit</button>
-      </form>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Publish</button>
-      </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="add_video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h1 class="modal-title" id="myModalLabel">Adding a Video</h4>
-        </div>
-
-         <form class="form-horizontal article_form">
-          <div class="form-group">
-            <label for="title" class="col-sm-3">Title</label>
-            <div class="col-sm-9">
-              {{input type="text" class="form-control" id="title" placeholder="Enter a title or heading for your video" value=title}}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="caption" class="col-sm-3">Caption</label>
-            <div class="col-sm-9">
-              {{input type="text" class="form-control" id="caption" placeholder="Enter a caption for your video" value=caption}}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="video_id" class="col-sm-3">Video ID</label>
-            <div class="col-sm-9">
-              {{input type="text" class="form-control" id="video_id" placeholder="Enter the id of your YouTube video" value=video_id}}
-            </div>
-          </div>
-
-         <button class="btn btn-default" data-dismiss="modal" {{action "createNewVideo" this}}>Submit</button>
-        </form>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Publish</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </script>
 
 
@@ -651,20 +656,19 @@
 
           
 
-<script type="text/x-handlebars" id="issue/summary">
-  <div>
+<script type="text/x-handlebars" id="issue/_summary"> 
+   <div class="summary">
        <ul class="sortable list_with_no_style">
       <li>Newsletter Title: {{controllers.newsletter.title}}</li>
       <li>Newsletter Subtitle: {{controllers.newsletter.subtitle}}</li>
-
-
-      
-
-
+        {{controllers.issue.id}}
+      {{#each controllers.issue.posts}}
+        {{id}}
+      {{/each}}
       {{#each post in controllers.issue.posts}}
-       
+
+       testing
         {{#if post.article}}
-          
           <li class="post" data-id={{unbound post.id}}>
             {{post.position}}: {{post.article.title}}
             {{#link-to 'article' post.article}}Edit{{/link-to}}
@@ -691,8 +695,11 @@
         {{/if}}
 
       {{/each}}
-    </ul>
-  </div>
+
+      </ul>
+    </div>
+
+      {{outlet}}
 </script>
   
 <!ember/app dependencies below />
