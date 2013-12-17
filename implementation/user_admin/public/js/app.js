@@ -26,7 +26,13 @@ App.Router.map(function() {
   });
 });
 
-
+App.ApplicationRoute = Ember.Route.extend({
+  setupController: function(controller,model) {
+        controller.set('model', model);
+        this.controllerFor('organization').set('model', this.store.find('organization', 1));
+        this.controllerFor('newsletter').set('model', this.store.find('newsletter', 1));
+  }
+});
 
 
 App.IssuesRoute = Ember.Route.extend({
