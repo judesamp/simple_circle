@@ -82,10 +82,10 @@
         <br />
         <br />
 
-        <li class="borderline">{{#link-to 'index'}}Issues{{/link-to}}</li>
+        <li class="borderline">{{#link-to 'issues'}}Issues{{/link-to}}</li>
             
        
-        <li class="borderline">{{partial 'issues'}}</li>
+        <li class="borderline">placeholder</li>
       </ul>
         
     
@@ -122,26 +122,23 @@
         </div>
       </div>
       <!--End of Popover Form for New Issues-->
-
-
   </script>
 
 
 
-  <script type="text/x-handlebars" id="_issues">
+  <script type="text/x-handlebars" id="issues">
      
     {{#each controllers.issues}}
       <div class="row">
-        <div class="col-xs-8 col-md-8">{{#link-to 'issue.index' this}} {{draft_name}} {{/link-to}}</div>
+        <div class="col-xs-8 col-md-8">{{#link-to 'issue' this}} {{draft_name}} {{/link-to}}</div>
           <div class="glyphicon glyphicon-list-alt col-xs-2 col-md-1"></div>
         </div>
       </div>
     {{/each}} 
+
+    {{outlet}}
   </script>
 
-<script type="text/x-handlebars" id="issues">
-  {{outlet}}    
-</script>
 
 <script type="text/x-handlebars" id="issue">
     <div class="centered">

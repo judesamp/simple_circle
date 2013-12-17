@@ -26,26 +26,21 @@ App.Router.map(function() {
   });
 });
 
-App.ApplicationRoute = Ember.Route.extend({
-  setupController: function(controller,model) {
-        controller.set('model', model);
-        this.controllerFor('newsletter').set('model',this.store.find('newsletter', 1));
-        this.controllerFor('issues').set('model',this.store.find('issue'));
-  },
 
-  model: function () {
-    return this.store.find('organization', 1);
-  }
-});
-
-App.IndexRoute = Ember.Route.extend({
-  model: function () {
-    return this.store.find('newsletter', 1);
-  }
-});
 
 
 App.IssuesRoute = Ember.Route.extend({
+  setupController: function(controller,model) {
+        controller.set('model', model);
+        this.controllerFor('organization').set('model', this.store.find('organization', 1));
+        this.controllerFor('newsletter').set('model', this.store.find('newsletter', 1));
+        this.controllerFor('article').set('model',this.store.find('article'));
+        this.controllerFor('post').set('model', this.store.find('post'));
+        this.controllerFor('article').set('model',this.store.find('article'));
+        this.controllerFor('event').set('model',this.store.find('event'));
+        this.controllerFor('video').set('model',this.store.find('video'));
+  },
+
   model: function () {
     return this.store.find('issue');
   }
@@ -106,7 +101,7 @@ App.VideoRoute = Ember.Route.extend({
 
 
 App.ApplicationController = Ember.ObjectController.extend({
-  needs: ["newsletter", "issues", "issue"],
+  needs: ["newsletter", "issues", "issue", "post"],
 
   isEditingTitle: false,
   isEditingSubtitle: false,
@@ -311,6 +306,7 @@ App.NewsletterController = Ember.ObjectController.extend({
 });
 
 App.IssuesController = Ember.ArrayController.extend({
+  needs: ["issues"],
 });
 
 
